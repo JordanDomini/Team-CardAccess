@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cbu-card-reader",
+  "private_key_id": "305551229bf0bf3411722328597b35c726eb6815",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC60Wl/xSC9Vlep\ngUu01/PWMztamadoXZl8lRc6CDeXtN86O7qMnuI7Pn55wVGqDwcKh+dev7ix0iGf\neoEdsGSPj6SqYKqxmYaNL13usa5ZfzU3SnEKcHOKaoyPrs9IxGmQFzrSysbprWlj\n3DIGQcyzqlvzUeirDNdSVYR0gRePGeoV2HrDZ3mKa2s3bfk5Te0FhdE8frOJRnsl\niTwvA5xxUfSQb41lidZyChRzPVBJj8hUZQEL465J6OuI1rRqbNutnJXw/8L/rDwD\nsLuT4hfx2MAWIqI8hCiSn+v6nKOIkLwYczRXkeqFTzR4aFIcrANTSF522ZCnilvK\nTAhp8FsZAgMBAAECggEAPluTJvJyXLC63xoI3qrsubVtHO9H+WawymxrjdPbVpip\noGL6gGCybAsOpW55Z1XPyFyXxsEhEb3tujFmcrYDwwWz9akBoPl5d5v1cyy84SO8\nbCG9fLoPXwb0tysnBoeFIvMWD/FelvZqxMnlqsAA54G4Yo4XJy1InDNuXIMQjZOK\nlnnZDTd3l434rWhHW0yGCoNont/EN1EREROw+qA7Q3OovSFcpS7sB16HIlV/Jhs1\nm3FEwXb/6luj1E++IGF0eXHGzeVD4EAp62O60fasDITfqdqnxyM+G0w2uIJs5PLZ\nNirLtjc8J5RCJlro0V7VxYkVfb772nRMktIQfMt5nwKBgQDyHay7Cagmf4N9h+eU\nMCbApkOliSbFN98SPl/+pQmdU7rxIS4yScsvlXCox/gSfqt35cdldWypdhNSzsqt\nSYxABlZJmo1X06RHnfg0/Pzk+OflUWzmXaJIfQ7ZE22R8tPKcFv/f7nKWU1zy+aq\nZtWD3L5JJvrS3ZUxpCAMz9ykAwKBgQDFh/MdKgWTx/RoFB72zuMhaAY4/cvzCHzW\nrWxgox36OkSbfqGeQF+AXNXqxcB8xlFbPlaMHTwcAxC7wk7kLVzzIabIe4sYoimT\nAH3dMrKkzqALybKDnOQkjL37eMwnV2y+hx5XLytqHex+ALwzfpUSqmOvzkOiUtpQ\nDulKwQSPswKBgGqyOxmd0tVMYlTinGJIqftCChOcElLdIVf31vPwJQGJEZwLxEDz\nFjCdCa3HmgIEgmnu/+UtTzqKx085xEWDYOQiJsp+6oTmxsGs0uH/Dy+UpRUAwh3u\n64JIYk+1aRblTQIsa853qheLLT+3fqpfcP6QO+ce33AnqATdUCZ1P8WjAoGAZlOc\n73i7Vuj4hYoW2EgohT+8KX3gT1AQS62fPRiDCQNyUxLwamhykK6G6o3yvzCFKL1M\nXF0wrFoyKvHnqHCPfCvsmGLXlbU70Dkq+pGu1Y1sf27HGUMHNJ/sMv9K0v6JCNI6\nN3PqC5jg0A1VcV+bngXCimpRwx8klOCEngMLd90CgYEAyoQm1qkW39FyBuZB6uJl\neZc3HsXXgYr+4GxSfjBlh2ANc9LXRWbPfPhx+yJj2rZZiI+liyV0xzmdoexhkBIP\n2T9ezYKGWATmBvG6JSZJYCfvSsUPxBe8RO0iE4DV/J0+CkNwlrj4wvptPtbWGDv4\nRavtkvaoppyw2VRYk/gq0Ns=\n-----END PRIVATE KEY-----\n",
+  "client_email": "log-generator@cbu-card-reader.iam.gserviceaccount.com",
+  "client_id": "100147776659926530350",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/log-generator%40cbu-card-reader.iam.gserviceaccount.com"
+}
