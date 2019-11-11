@@ -8,6 +8,7 @@ time.sleep(1)
 try:
     while True:                       # making a loop
         if keyboard.is_pressed('o'):  # if o is pressed
+            print("Turning on.")
             if i == 0:
                 GPIO.output(24, 1)       # set port/pin value to 1/GPIO.HIGH/True
                 i = 1
