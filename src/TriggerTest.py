@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO           # import RPi.GPIO module
 import keyboard                   # using module keyboard
 import time
 GPIO.setmode(GPIO.BCM)            # choose BCM or BOARD
-GPIO.setup(7, GPIO.OUT)           # set a port/pin as an output
+GPIO.setup(24, GPIO.OUT)           # set a port/pin as an output
 GPIO.setwarnings(False)
 i = 0
 
