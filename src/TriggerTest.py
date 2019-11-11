@@ -18,7 +18,5 @@ try:
                 i = 0
                 time.sleep(1)
                 break             # finish the loop
-        else:
-            pass
 except:
     GPIO.cleanup()
