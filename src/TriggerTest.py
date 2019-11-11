@@ -7,7 +7,7 @@ GPIO.setup(24, GPIO.OUT)           # set a port/pin as an output
 i = 0
 time.sleep(1)
 while True:                       # making a loop                         # used try so that if user pressed other than the given key error will not be shown
-    if keyboard.is_pressed(' '):  # if spacebar is pressed
+    if keyboard.is_pressed('o'):  # if o is pressed
         if i == 0:
 
             GPIO.output(24, 1)       # set port/pin value to 1/GPIO.HIGH/True
