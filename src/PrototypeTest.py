@@ -7,6 +7,7 @@ from mfrc522 import SimpleMFRC522
 GPIO.setmode(GPIO.BOARD)            # choose BCM or BOARD
 GPIO.setup(26, GPIO.OUT)           # set a port/pin as an output
 GPIO.setup(29, GPIO.OUT)
+GPIO.setup(30, GPIO.OUT)
 
 reader = SimpleMFRC522()
 
@@ -29,7 +30,8 @@ try:
                 GPIO.output(29, 0)
                 i = 0
                 time.sleep(1)
-        else:
+            else:
+                GPIO.output(30, 0)
 
 except:
     GPIO.cleanup()
