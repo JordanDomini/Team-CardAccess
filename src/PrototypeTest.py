@@ -15,8 +15,7 @@ time.sleep(1)
 
 try:
     while True:                       # making a loop
-        id, text = reader.read()      # waiting for id to be scanned
-        if id.contains("470495939090"):  # if id is correct
+        if reader.read():  # if id is correct
             if i == 0:
                 print("\nTurning on.")
                 GPIO.output(26, 1)       # set port/pin value to 1/GPIO.HIGH/True
