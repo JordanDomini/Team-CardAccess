@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO           # import RPi.GPIO module
-import keyboard                   # using module keyboard
 import time
 from mfrc522 import SimpleMFRC522
 
