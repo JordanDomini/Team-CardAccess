@@ -16,9 +16,9 @@ time.sleep(2)
 try:
     while True:                       # making an infinite loop
         id, text = reader.read()      # waiting for id to be scanned
-        # while time.time() < future:
-        #     if reader.read():
-        #         future = time.time() + 2
+        while time.time() < future:
+            if reader.read():
+                future = time.time() + 2
         if '470495939090' in str(id):        # if id is correct
             if i == 0:                # check if the system is off
                 print("\nTurning on.")
