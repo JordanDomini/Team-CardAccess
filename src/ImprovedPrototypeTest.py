@@ -19,7 +19,7 @@ try:
         # while time.time() < future:
         #     if reader.read():
         #         future = time.time() + 2
-        if id == 470495939090:        # if id is correct
+        if '470495939090' in str(id):        # if id is correct
             if i == 0:                # check if the system is off
                 print("\nTurning on.")
                 GPIO.output(26, 0)       # set port/pin value to 1/GPIO.HIGH/True
@@ -32,7 +32,5 @@ try:
                 i = 0
             else:
                 GPIO.output(31, 1)
-
-
 except:
     GPIO.cleanup()
