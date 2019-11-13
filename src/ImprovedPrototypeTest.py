@@ -32,5 +32,6 @@ try:
                 i = 0
             else:
                 GPIO.output(31, 1)
+        future = time.time()
 except:
     GPIO.cleanup()
