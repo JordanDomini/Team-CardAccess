@@ -18,18 +18,17 @@ try:
         if reader.read():  # if id is correct
             if i == 0:
                 print("\nTurning on.")
-                GPIO.output(26, 1)       # set port/pin value to 1/GPIO.HIGH/True
-                GPIO.output(29, 1)
+                GPIO.output(26, 0)       # set port/pin value to 1/GPIO.HIGH/True
+                GPIO.output(29, 0)
                 i = 1
                 time.sleep(1)
             elif i == 1:
                 print("\nTurning off.")
-                GPIO.output(26, 0)  # set port/pin value to 0/GPIO.LOW/False
-                GPIO.output(29, 0)
+                GPIO.output(26, 1)  # set port/pin value to 0/GPIO.LOW/False
+                GPIO.output(29, 1)
                 i = 0
                 time.sleep(1)
             else:
-                GPIO.output(31, 0)
-
+                GPIO.output(31, 1)
 except:
     GPIO.cleanup()
