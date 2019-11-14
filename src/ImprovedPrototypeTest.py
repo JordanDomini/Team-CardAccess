@@ -33,6 +33,6 @@ try:
             else:
                 GPIO.output(31, 1)
             time.sleep(1)
-        future = time.monotonic() + 2
+            future = time.monotonic() + 2
 except:
     GPIO.cleanup()
