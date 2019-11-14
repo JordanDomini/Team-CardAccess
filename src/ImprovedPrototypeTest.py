@@ -10,8 +10,8 @@ GPIO.setup(31, GPIO.OUT)
 
 reader = SimpleMFRC522()
 i = 0
-GPIO.output(26, 0)
-future = time.monotonic() + 1
+GPIO.output(26, 1)
+future = time.monotonic() + 4
 time.sleep(2)
 
 try:
@@ -19,7 +19,7 @@ try:
         id, text = reader.read()      # waiting for id to be scanned
         while time.monotonic() < future:
             if reader.read():
-                future = time.monotonic() + 1
+                future = time.monotonic() + 2
                 time.sleep(1)
         if '470495939090' in str(id):        # if id is correct
             if i == 0:                # check if the system is off
@@ -34,7 +34,7 @@ try:
                 i = 0
             else:
                 GPIO.output(31, 1)
-        future = time.monotonic() + 1
         time.sleep(1)
+        future = time.monotonic() + 2
 except:
     GPIO.cleanup()
