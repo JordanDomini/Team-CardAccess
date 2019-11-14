@@ -10,15 +10,17 @@ GPIO.setup(31, GPIO.OUT)
 
 reader = SimpleMFRC522()
 i = 0
-future = time.time() + 2
+GPIO.output(26, 0)
+future = time.monotonic() + 1
 time.sleep(2)
 
 try:
     while True:                       # making an infinite loop
         id, text = reader.read()      # waiting for id to be scanned
-        while time.time() < future:
+        while time.monotonic() < future:
             if reader.read():
-                future = time.time() + 2
+                future = time.monotonic() + 1
+                time.sleep(1)
         if '470495939090' in str(id):        # if id is correct
             if i == 0:                # check if the system is off
                 print("\nTurning on.")
@@ -32,6 +34,7 @@ try:
                 i = 0
             else:
                 GPIO.output(31, 1)
-        future = time.time() + 2
+        future = time.monotonic() + 1
+        time.sleep(1)
 except:
     GPIO.cleanup()
