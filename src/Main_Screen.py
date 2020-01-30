@@ -198,7 +198,7 @@ def login():  # login screen to main window
     username_entry1.pack()
     Label(screen2, text="").pack()
     Label(screen2, text="Password *").pack()
-    password_entry1 = Entry(screen2, textvariable=password_verify)
+    password_entry1 = Entry(screen2, textvariable=password_verify, show="*")
     password_entry1.pack()
     Label(screen2, text="").pack()
     Button(screen2, text="Login", width=10, height=1, command=login_verify).pack()
@@ -217,5 +217,5 @@ def main_screen():
 
     screen.mainloop()
 
-
-main_screen()
+if __name__ == "__main__":
+    main_screen()

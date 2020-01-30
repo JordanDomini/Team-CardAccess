@@ -11,3 +11,4 @@ pip install object-mapper
 pip install SQLAlchemy
 static ip_address=$1/24
 
+
