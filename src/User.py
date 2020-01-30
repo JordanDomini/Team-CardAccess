@@ -2,7 +2,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean
 Base = declarative_base()
 
-
+# A class for objects of type student that extends User
+# Creates a template for sqlalchemy to map db info to an object, making it much more usable
 class User(Base):
     __tablename__ = 'users'
 

@@ -8,3 +8,9 @@ def check_lvl(scanned_rfid):
 
 def get_usr(scanned_rfid):
     return df.get_user(scanned_rfid)
+
+def add_usr(scanned_rfid):
+    return df.addUser(scanned_rfid)
+
+def edit_rfid(id):
+    df.edit_rfid_tag(id)

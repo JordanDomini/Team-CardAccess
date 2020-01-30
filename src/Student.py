@@ -2,9 +2,8 @@ import User
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
-Base = declarative_base()
-
-
+# A class for objects of type Student that extends User
+# Creates a template for sqlalchemy to map db info to an object, making it much more usable
 class Student(User):
     __tablename__ = 'students'
 
@@ -23,4 +22,7 @@ class Student(User):
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
     def __repr__(self):
-        return "<Student(id=%s , name='%s', rfid_tag='%s', active=%s)>" % (self.Num, self.Type, self.rfid_tag, self.active)
+        return "<Student(Num=%s , Type='%s', Mach001='%s', Mach002=%s, Mach003='%s', Mach004='%s', Mach005='%s', " \
+               "Mach006='%s', Mach007='%s', Mach008='%s', Mach009='%s', Mach010='%s')>" % \
+               (self.Num, self.Type, self.Mach001, self.Mach002, self.Mach003, self.Mach004, self.Mach005, self.Mach006,
+                self.Mach007, self.Mach008, self.Mach009, self.Mach010)
