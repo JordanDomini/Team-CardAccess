@@ -1,6 +1,8 @@
 from tkinter import *
 import os
+#from mfrc522 import SimpleMFRC522
 
+#reader = SimpleMFRC522()
 
 def delete2():
     screen3.destroy()
@@ -26,6 +28,13 @@ def delete6():
 
 def delete7():
     screen1.destroy()
+
+
+# def card_read():
+#     while 1:
+#         if reader.read_id():
+#             id = reader.read()
+#             return str(id).strip()
 
 
 def machineSelection():  # screen to choose machine
@@ -192,7 +201,7 @@ def register():  # screen for user to register their information in order to log
     Label(screen1, text="Enter Student ID").grid(row=2, column=4)
     ID_entry1 = Entry(screen1, textvariable=ID_verify).grid(row=3, column=4)
     Label(screen1, text="").grid(row=4)
-    Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2).grid(row=5, column=3)
+    Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2, command=card_read()).grid(row=5, column=3)
     Label(screen1, text="").grid(row=6)
     Checkbutton(screen1, text="Machine Name 01").grid(row=7, column=2)
     Checkbutton(screen1, text="Machine Name 02").grid(row=7, column=4)
