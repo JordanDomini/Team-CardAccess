@@ -25,7 +25,6 @@ def delete6():
 
 
 def delete7():
-    main_screen()
     screen1.destroy()
 
 
