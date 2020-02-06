@@ -9,6 +9,7 @@ def delete2():
 
 
 def delete4():
+    admin_student()
     screen1.destroy()
 
 
@@ -27,7 +28,16 @@ def delete6():
 
 
 def delete7():
-    screen1.destroy()
+    screen9.destroy()
+
+
+def delete8():
+    screen10.destroy()
+
+
+def delete9():
+    admin_student()
+    screen11.destroy()
 
 
 # def card_read():
@@ -116,7 +126,7 @@ def userPermission():  # Screen for giving the users permission
     Button(screen8, text="Return", width=10, height=1, command=delete7).grid(row=13)
 
 
-def Permission():
+def permission():
     userPermission()
     screen5.destroy()
 
@@ -180,15 +190,15 @@ def login_verify():  # Checks saved information to verify login credentials
         user_not_found()
 
 
-def register():  # screen for user to register their information in order to login
+def student_permission():  # screen for user to register their information in order to login
     global screen1
     screen1 = Toplevel(screen)
-    screen1.title("User Permissions")
+    screen1.title("Register")
     screen1.geometry("700x400")
     Label(screen1, text="User Permissions").grid(row=0, column=3)
     Label(screen1, text="").grid(row=1)
-    global username_verify
-    global password_verify
+    global name_verify
+    global ID_verify
 
     name_verify = StringVar()
     ID_verify = IntVar()
@@ -201,7 +211,7 @@ def register():  # screen for user to register their information in order to log
     Label(screen1, text="Enter Student ID").grid(row=2, column=4)
     ID_entry1 = Entry(screen1, textvariable=ID_verify).grid(row=3, column=4)
     Label(screen1, text="").grid(row=4)
-    Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2, command=card_read()).grid(row=5, column=3)
+    Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2).grid(row=5, column=3)
     Label(screen1, text="").grid(row=6)
     Checkbutton(screen1, text="Machine Name 01").grid(row=7, column=2)
     Checkbutton(screen1, text="Machine Name 02").grid(row=7, column=4)
@@ -212,7 +222,78 @@ def register():  # screen for user to register their information in order to log
     Checkbutton(screen1, text="Machine Name 05").grid(row=11, column=2)
     Checkbutton(screen1, text="Machine Name 06").grid(row=11, column=4)
     Label(screen1, text="").grid(row=12)
-    Button(screen1, text="Return", width=10, height=1, command=delete7).grid(row=13)
+    Button(screen1, text="Return", width=10, height=1, command=delete4).grid(row=13)
+
+
+def student():
+    student_permission()
+    screen10.destroy()
+
+
+def admin_register():  # screen for registering admin info
+    global screen11
+    screen11 = Toplevel(screen)
+    screen11.title("Register")
+    screen11.geometry("700x400")
+    Label(screen11, text="Admin Info").grid(row=0, column=3)
+    Label(screen11, text="").grid(row=1)
+    global name_verify1
+    global ID_verify1
+
+    name_verify1 = StringVar()
+    ID_verify1 = IntVar()
+
+    global name_entry2
+    global ID_entry2
+
+    Label(screen11, text="Enter Name").grid(row=2, column=2)
+    name_entry2 = Entry(screen11, textvariable=name_verify1).grid(row=3, column=2)
+    Label(screen11, text="Enter Admin ID").grid(row=2, column=4)
+    ID_entry2 = Entry(screen11, textvariable=ID_verify1).grid(row=3, column=4)
+    Label(screen11, text="").grid(row=4)
+    Button(screen11, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2).grid(row=5, column=3)
+    Label(screen11, text="").grid(row=6)
+    Button(screen11, text="Return", width=10, height=1, command=delete9).grid(row=7)
+
+
+def admin():
+    admin_register()
+    screen10.destroy()
+
+
+def admin_student():  # screen for deciding which to register, Admin or Student
+    global screen10
+    screen10 = Toplevel(screen)
+    screen10.title("Which are You?")
+    screen10.geometry("400x400")
+    Label(screen10, text="").grid(row=0)
+    Label(screen10, text="").grid(row=1)
+    Button(screen10, text="Admin", width=20, height=2, command=admin).grid(row=2, column=3)
+    Label(screen10, text="").grid(row=3)
+    Button(screen10, text="Student", width=20, height=2, command=student).grid(row=4, column=3)
+    Label(screen10, text="").grid(row=5)
+    Label(screen10, text="").grid(row=6)
+    Button(screen10, text="Return", width=5, height=1, command=delete8).grid(row=7)
+
+
+def register():  # screen for initial RFID scanning
+    global screen9
+    screen9 = Toplevel(screen)
+    screen9.title("Scan Now")
+    screen9.geometry("300x250")
+    Label(screen9, text="").grid(row=0)
+    Label(screen9, text="").grid(row=1)
+    Label(screen9, text="").grid(row=2)
+    Button(screen9, text="Scan ID", width=10, height=2, command=scan_button).grid(row=3, column=4)
+    Label(screen9, text="").grid(row=4)
+    Label(screen9, text="").grid(row=5)
+    Label(screen9, text="").grid(row=6)
+    Button(screen9, text="Return", width=5, height=1, command=delete7).grid(row=7)
+
+
+def scan_button():
+    admin_student()
+    screen9.destroy()
 
 
 def login():  # login screen to main window
