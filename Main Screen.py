@@ -73,7 +73,7 @@ def edit():
     screen5.destroy()
 
 
-def userPermission():
+def userPermission():  # Screen for giving the users permission
     global screen8
     screen8 = Toplevel(screen)
     screen8.title("User Permissions")
@@ -106,7 +106,6 @@ def userPermission():
     Checkbutton(screen8, text="Machine Name 06").grid(row=11, column=4)
     Label(screen8, text="").grid(row=12)
     Button(screen8, text="Return", width=10, height=1, command=delete7).grid(row=13)
-    Checkbutton(screen8, text="Name", )
 
 
 def Permission():
