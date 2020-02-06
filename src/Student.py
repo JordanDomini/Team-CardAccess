@@ -1,13 +1,16 @@
-import User
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
+Base = declarative_base()
+
+
 # A class for objects of type Student that extends User
 # Creates a template for sqlalchemy to map db info to an object, making it much more usable
-class Student(User):
+class Student(Base):
     __tablename__ = 'students'
 
-    Num = Column(Integer, primary_key=True)
+    Num = Column(Integer, primary_key=True, index=True)
     Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
     Mach001 = Column(Boolean, nullable=False)
     Mach002 = Column(Boolean, nullable=False)
@@ -20,6 +23,7 @@ class Student(User):
     Mach009 = Column(Boolean, nullable=False)
     Mach010 = Column(Boolean, nullable=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    User = relationship('users', )
 
     def __repr__(self):
         return "<Student(Num=%s , Type='%s', Mach001='%s', Mach002=%s, Mach003='%s', Mach004='%s', Mach005='%s', " \

@@ -1,6 +1,9 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
+
 Base = declarative_base()
+
 
 # A class for objects of type student that extends User
 # Creates a template for sqlalchemy to map db info to an object, making it much more usable
@@ -28,3 +31,51 @@ class User(Base):
     def get_type(self):
         return self.type_num
 
+
+class Student(Base):
+    __tablename__ = 'students'
+
+    Num = Column(Integer, primary_key=True)
+    Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
+    Mach001 = Column(Boolean, nullable=False)
+    Mach002 = Column(Boolean, nullable=False)
+    Mach003 = Column(Boolean, nullable=False)
+    Mach004 = Column(Boolean, nullable=False)
+    Mach005 = Column(Boolean, nullable=False)
+    Mach006 = Column(Boolean, nullable=False)
+    Mach007 = Column(Boolean, nullable=False)
+    Mach008 = Column(Boolean, nullable=False)
+    Mach009 = Column(Boolean, nullable=False)
+    Mach010 = Column(Boolean, nullable=False)
+    id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    User = relationship("users", back_populates='Students')
+
+    def __repr__(self):
+        return "<Student(Num=%s , Type='%s', Mach001='%s', Mach002=%s, Mach003='%s', Mach004='%s', Mach005='%s', " \
+               "Mach006='%s', Mach007='%s', Mach008='%s', Mach009='%s', Mach010='%s')>" % \
+               (self.Num, self.Type, self.Mach001, self.Mach002, self.Mach003, self.Mach004, self.Mach005, self.Mach006,
+                self.Mach007, self.Mach008, self.Mach009, self.Mach010)
+
+
+class Admin(Base):
+    __tablename__ = 'admins'
+
+    Num = Column(Integer, primary_key=True)
+    Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
+    id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    User = relationship("users", back_populates='Admins')
+
+    def __repr__(self):
+        return "<Admin(Num=%s , name='%s', rfid_tag='%s', active=%s)>" % (self.Num, self.Type, self.id)
+
+
+class LabMachine(Base):
+    __tablename__ = 'machines'
+
+    Name = Column(String(50), nullable=False)
+    Mach_num = Column(String(50), nullable=False, primary_key=True, index=True)
+    Current_user = Column(Integer, nullable=True)
+
+    def __repr__(self):
+        return "<LabMachine(Name=%s , Mach_num='%s', Current_user='%s')>" % (
+        self.Name, self.Mach_num, self.Current_user)
