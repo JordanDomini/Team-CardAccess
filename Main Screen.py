@@ -24,26 +24,32 @@ def delete6():
     screen7.destroy()
 
 
+def delete7():
+    dashboard()
+    screen8.destroy()
+
+
 def machineSelection():  # screen to choose machine
     global screen6
     screen6 = Toplevel(screen)
     screen6.title("Machine Selection")
-    screen6.title("800x800")
-    Label(screen6, text="Choose a machine").pack()
-    Button(screen6, text="Machine Name 01", fg="black", width=30, height=2).pack()
-    Label(screen6, text="").pack()
-    Button(screen6, text="Machine Name 02", fg="black", width=30, height=2).pack()
-    Label(screen6, text="").pack()
-    Button(screen6, text="Machine Name 03", fg="black", width=30, height=2).pack()
-    Label(screen6, text="").pack()
-    Button(screen6, text="Machine Name 04", fg="black", width=30, height=2).pack()
-    Label(screen6, text="").pack()
-    Button(screen6, text="Machine Name 05", fg="black", width=30, height=2).pack()
-    Label(screen6, text="").pack()
-    Button(screen6, text="Machine Name 06", fg="black", width=30, height=2).pack()
-    Label(screen6, text="").pack()
-    Button(screen6, text="Return", width=10, height=1, command=delete5).pack()
-    Label(screen6, text="").pack()
+    screen6.geometry("800x300")
+    Label(screen6, text="Choose a machine").grid(row=0, column=3)
+    Button(screen6, text="Machine Name 01", fg="black", width=30, height=2).grid(row=1, column=2)
+    Button(screen6, text="Machine Name 02", fg="black", width=30, height=2).grid(row=1, column=4)
+    Label(screen6, text="").grid(row=2)
+    Button(screen6, text="Machine Name 03", fg="black", width=30, height=2).grid(row=3, column=2)
+    Button(screen6, text="Machine Name 04", fg="black", width=30, height=2).grid(row=3, column=4)
+    Label(screen6, text="").grid(row=4)
+    Button(screen6, text="Machine Name 05", fg="black", width=30, height=2).grid(row=5, column=2)
+    Button(screen6, text="Machine Name 06", fg="black", width=30, height=2).grid(row=5, column=4)
+    Label(screen6, text="").grid(row=6)
+    Button(screen6, text="Return", width=10, height=1, command=delete5).grid(row=7)
+
+
+def chooseMachine():
+    machineSelection()
+    screen5.destroy()
 
 
 def editMachine():  # Screen to allow edits to made to machine information
@@ -67,8 +73,44 @@ def edit():
     screen5.destroy()
 
 
-def chooseMachine():
-    machineSelection()
+def userPermission():
+    global screen8
+    screen8 = Toplevel(screen)
+    screen8.title("User Permissions")
+    screen8.geometry("700x400")
+    Label(screen8, text="User Permissions").grid(row=0, column=3)
+    Label(screen8, text="").grid(row=1)
+    global username_verify
+    global password_verify
+
+    name_verify = StringVar()
+    ID_verify = IntVar()
+
+    global name_entry1
+    global ID_entry1
+
+    Label(screen8, text="Enter Name").grid(row=2, column=2)
+    name_entry1 = Entry(screen8, textvariable=name_verify).grid(row=3, column=2)
+    Label(screen8, text="Enter Student ID").grid(row=2, column=4)
+    ID_entry1 = Entry(screen8, textvariable=ID_verify).grid(row=3, column=4)
+    Label(screen8, text="").grid(row=4)
+    Button(screen8, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2).grid(row=5, column=3)
+    Label(screen8, text="").grid(row=6)
+    Checkbutton(screen8, text="Machine Name 01").grid(row=7, column=2)
+    Checkbutton(screen8, text="Machine Name 02").grid(row=7, column=4)
+    Label(screen8, text="").grid(row=8)
+    Checkbutton(screen8, text="Machine Name 03").grid(row=9, column=2)
+    Checkbutton(screen8, text="Machine Name 04").grid(row=9, column=4)
+    Label(screen8, text="").grid(row=10)
+    Checkbutton(screen8, text="Machine Name 05").grid(row=11, column=2)
+    Checkbutton(screen8, text="Machine Name 06").grid(row=11, column=4)
+    Label(screen8, text="").grid(row=12)
+    Button(screen8, text="Return", width=10, height=1, command=delete7).grid(row=13)
+    Checkbutton(screen8, text="Name", )
+
+
+def Permission():
+    userPermission()
     screen5.destroy()
 
 
@@ -76,11 +118,9 @@ def dashboard():  # Main screen after login, different options for user function
     global screen5
     screen5 = Toplevel(screen)
     screen5.title("Dashboard")
-    screen5.title("800x800")
+    screen5.geometry("400x300")
     Label(screen5, text="Dashboard").pack()
-    Button(screen5, text="Add a New User", fg="black", width=30, height=2).pack()
-    Label(screen5, text="").pack()
-    Button(screen5, text="Edit User Permissions", fg="black", width=30, height=2).pack()
+    Button(screen5, text="User Permissions", fg="black", width=30, height=2, command=Permission).pack()
     Label(screen5, text="").pack()
     Button(screen5, text="Add a machine", fg="black", width=30, height=2).pack()
     Label(screen5, text="").pack()
@@ -218,4 +258,5 @@ def main_screen():
     screen.mainloop()
 
 
-main_screen()
+if __name__ == "__main__":
+    main_screen()
