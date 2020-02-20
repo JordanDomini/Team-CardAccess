@@ -12,7 +12,7 @@ mach_num = "MACH001"
 user_id = "none"
 PWD='123123123'
 USR='test_user'
-SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@10.0.0.1/test_db'.format(USR, PWD)
+SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
 

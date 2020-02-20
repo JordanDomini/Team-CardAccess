@@ -9,6 +9,5 @@ sudo apt-get install python3
 sudo apt-get install python3-pip
 pip install object-mapper
 pip install SQLAlchemy
-static ip_address=$1/24
 
 
