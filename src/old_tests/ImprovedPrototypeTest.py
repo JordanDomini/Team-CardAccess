@@ -15,7 +15,7 @@ GPIO.setup(relay, GPIO.OUT)
 
 reader = SimpleMFRC522()
 i = 0
-GPIO.output(relay, 1)
+GPIO.output(relay, 0)
 GPIO.output(red_led, 1)
 GPIO.output(green_led, 0)
 future = time.monotonic() + 1
@@ -27,7 +27,7 @@ try:
             if reader.read():
                 if time.monotonic() < future:
                     id, string = reader.read()
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, 0)
                     GPIO.output(green_led, 0)
                     break
                 else:
@@ -35,14 +35,14 @@ try:
         if '470495939090' in str(id):        # if id is correct
             if i == 0:                # check if the system is off
                 print("\nTurning on.")
-                GPIO.output(relay, 0)
+                GPIO.output(relay, 1)
                 GPIO.output(green_led, 1)
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, 0)
                 i = 1
             elif i == 1:             # check if the system is on
                 print("\nTurning off.")
-                GPIO.output(relay, 1)
-                GPIO.output(red_led, 0)
+                GPIO.output(relay, 0)
+                GPIO.output(red_led, 1)
                 GPIO.output(green_led, 0)
                 i = 0
             else:
