@@ -256,7 +256,7 @@ def edit_scan():
 def register_admin_student():  # screen for deciding which to register, Admin or Student
     global screen10
     screen10 = Toplevel(screen)
-    screen10.title("Which are You?")
+    screen10.title("Which are You Registering?")
     screen10.geometry("400x400")
     Label(screen10, text="").grid(row=0)
     Label(screen10, text="").grid(row=1)
@@ -271,7 +271,7 @@ def register_admin_student():  # screen for deciding which to register, Admin or
 def edit_admin_student():  # login screen to main window
     global screen2
     screen2 = Toplevel(screen)
-    screen2.title("Which are You?")
+    screen2.title("Which are You Registering?")
     screen2.geometry("400x400")
     Label(screen2, text="").grid(row=0)
     Label(screen2, text="").grid(row=1)
