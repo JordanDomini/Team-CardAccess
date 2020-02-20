@@ -50,7 +50,10 @@ def card_read():
          if reader.read_id():
              id = reader.read()
              print(str(id).strip())
+             register_admin_student()
+             screen9.destroy()
              break
+
 
 
 def machineSelection():  # screen to choose machine
