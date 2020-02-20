@@ -4,17 +4,22 @@ import os
 
 #reader = SimpleMFRC522()
 
+
+def delete1():
+    screen2.destroy()
+
+
 def delete2():
     screen3.destroy()
 
 
 def delete4():
-    admin_student()
+    register_admin_student()
     screen1.destroy()
 
 
 def delete3():
-    screen4.destroy()
+    screen3.destroy()
 
 
 def delete5():
@@ -36,7 +41,7 @@ def delete8():
 
 
 def delete9():
-    admin_student()
+    register_admin_student()
     screen11.destroy()
 
 
@@ -152,44 +157,6 @@ def login_success():
     screen2.destroy()
 
 
-def password_not_recognized():  # Displays message if wrong password is entered
-    global screen3
-    screen3 = Toplevel(screen)
-    screen3.title("Success")
-    screen3.geometry("150x100")
-    Label(screen3, text="Password not recognized").pack()
-    Button(screen3, text="ok", command=delete2).pack()
-
-
-def user_not_found():  # Displays message if wrong user name is entered
-    global screen4
-    screen4 = Toplevel(screen)
-    screen4.title("Success")
-    screen4.geometry("150x100")
-    Label(screen4, text="User not found").pack()
-    Button(screen4, text="ok", command=delete3).pack()
-
-
-def login_verify():  # Checks saved information to verify login credentials
-
-    username1 = username_verify.get()
-    password1 = password_verify.get()
-    username_entry1.delete(0, END)
-    password_entry1.delete(0, END)
-
-    list_of_files = os.listdir()
-    if username1 in list_of_files:
-        file1 = open(username1, "r")
-        verify = file1.read().splitlines()
-        if password1 in verify:
-            login_success()
-            print("Login Success")
-        else:
-            password_not_recognized()
-    else:
-        user_not_found()
-
-
 def student_permission():  # screen for user to register their information in order to login
     global screen1
     screen1 = Toplevel(screen)
@@ -261,7 +228,32 @@ def admin():
     screen10.destroy()
 
 
-def admin_student():  # screen for deciding which to register, Admin or Student
+def register_user():  # screen for initial RFID scanning
+    global screen9
+    screen9 = Toplevel(screen)
+    screen9.title("Scan Now")
+    screen9.geometry("300x250")
+    Label(screen9, text="").grid(row=0)
+    Label(screen9, text="").grid(row=1)
+    Label(screen9, text="").grid(row=2)
+    Button(screen9, text="Scan ID", width=10, height=2, command=register_scan).grid(row=3, column=4)
+    Label(screen9, text="").grid(row=4)
+    Label(screen9, text="").grid(row=5)
+    Label(screen9, text="").grid(row=6)
+    Button(screen9, text="Return", width=5, height=1, command=delete7).grid(row=7)
+
+
+def register_scan():
+    register_admin_student()
+    screen9.destroy()
+
+
+def edit_scan():
+    edit_admin_student()
+    screen3.destroy()
+
+
+def register_admin_student():  # screen for deciding which to register, Admin or Student
     global screen10
     screen10 = Toplevel(screen)
     screen10.title("Which are You?")
@@ -276,51 +268,34 @@ def admin_student():  # screen for deciding which to register, Admin or Student
     Button(screen10, text="Return", width=5, height=1, command=delete8).grid(row=7)
 
 
-def register():  # screen for initial RFID scanning
-    global screen9
-    screen9 = Toplevel(screen)
-    screen9.title("Scan Now")
-    screen9.geometry("300x250")
-    Label(screen9, text="").grid(row=0)
-    Label(screen9, text="").grid(row=1)
-    Label(screen9, text="").grid(row=2)
-    Button(screen9, text="Scan ID", width=10, height=2, command=scan_button).grid(row=3, column=4)
-    Label(screen9, text="").grid(row=4)
-    Label(screen9, text="").grid(row=5)
-    Label(screen9, text="").grid(row=6)
-    Button(screen9, text="Return", width=5, height=1, command=delete7).grid(row=7)
-
-
-def scan_button():
-    admin_student()
-    screen9.destroy()
-
-
-def login():  # login screen to main window
+def edit_admin_student():  # login screen to main window
     global screen2
     screen2 = Toplevel(screen)
-    screen2.title("Login")
-    screen2.geometry("300x250")
-    Label(screen2, text="Please enter details below to login").pack()
-    Label(screen2, text="").pack()
+    screen2.title("Which are You?")
+    screen2.geometry("400x400")
+    Label(screen2, text="").grid(row=0)
+    Label(screen2, text="").grid(row=1)
+    Button(screen2, text="Admin", width=20, height=2, command=admin).grid(row=2, column=3)
+    Label(screen2, text="").grid(row=3)
+    Button(screen2, text="Student", width=20, height=2, command=student).grid(row=4, column=3)
+    Label(screen2, text="").grid(row=5)
+    Label(screen2, text="").grid(row=6)
+    Button(screen2, text="Return", width=5, height=1, command=delete1).grid(row=7)
 
-    global username_verify
-    global password_verify
 
-    username_verify = StringVar()
-    password_verify = StringVar()
-
-    global username_entry1
-    global password_entry1
-    Label(screen2, text="Username *").pack()
-    username_entry1 = Entry(screen2, textvariable=username_verify)
-    username_entry1.pack()
-    Label(screen2, text="").pack()
-    Label(screen2, text="Password *").pack()
-    password_entry1 = Entry(screen2, textvariable=password_verify)
-    password_entry1.pack()
-    Label(screen2, text="").pack()
-    Button(screen2, text="Login", width=10, height=1, command=login_verify).pack()
+def edit_user():
+    global screen3
+    screen3 = Toplevel(screen)
+    screen3.title("Scan Now")
+    screen3.geometry("300x250")
+    Label(screen3, text="").grid(row=0)
+    Label(screen3, text="").grid(row=1)
+    Label(screen3, text="").grid(row=2)
+    Button(screen3, text="Scan ID", width=10, height=2, command=register_scan).grid(row=3, column=4)
+    Label(screen3, text="").grid(row=4)
+    Label(screen3, text="").grid(row=5)
+    Label(screen3, text="").grid(row=6)
+    Button(screen3, text="Return", width=5, height=1, command=delete3).grid(row=7)
 
 
 def main_screen():
@@ -330,9 +305,9 @@ def main_screen():
     screen.title("Main Screen")
     Label(text="Main Screen", bg="grey", width="300", height="2", font=("Calibri", 13)).pack()
     Label(text="").pack()
-    Button(text="Login", height="2", width="30", command=login).pack()
+    Button(text="Edit User", height="2", width="30", command=edit_user).pack()
     Label(text="").pack()
-    Button(text="Register User", height="2", width="30", command=register).pack()
+    Button(text="Register User", height="2", width="30", command=register_user).pack()
 
     screen.mainloop()
 
