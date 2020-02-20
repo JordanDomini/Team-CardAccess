@@ -45,7 +45,7 @@ def delete9():
     screen11.destroy()
 
 
-def card_read():
+def register_user_card_read():
      while 1:
          if reader.read_id():
              id = reader.read()
@@ -55,110 +55,34 @@ def card_read():
              break
 
 
-
-def machineSelection():  # screen to choose machine
-    global screen6
-    screen6 = Toplevel(screen)
-    screen6.title("Machine Selection")
-    screen6.geometry("800x300")
-    Label(screen6, text="Choose a machine").grid(row=0, column=3)
-    Button(screen6, text="Machine Name 01", fg="black", width=30, height=2).grid(row=1, column=2)
-    Button(screen6, text="Machine Name 02", fg="black", width=30, height=2).grid(row=1, column=4)
-    Label(screen6, text="").grid(row=2)
-    Button(screen6, text="Machine Name 03", fg="black", width=30, height=2).grid(row=3, column=2)
-    Button(screen6, text="Machine Name 04", fg="black", width=30, height=2).grid(row=3, column=4)
-    Label(screen6, text="").grid(row=4)
-    Button(screen6, text="Machine Name 05", fg="black", width=30, height=2).grid(row=5, column=2)
-    Button(screen6, text="Machine Name 06", fg="black", width=30, height=2).grid(row=5, column=4)
-    Label(screen6, text="").grid(row=6)
-    Button(screen6, text="Return", width=10, height=1, command=delete5).grid(row=7)
+def edit_user_card_read():
+    while 1:
+        if reader.read_id():
+            id1 = reader.read()
+            print(str(id).strip())
+            edit_admin_student()
+            screen3.destroy()
+            break
 
 
-def chooseMachine():
-    machineSelection()
-    screen5.destroy()
+def admin_register_card_reader():
+    while 1:
+        if reader.read.id():
+            id2 = reader.read()
+            print(str(id).strip())
+            admin_register()
+            screen11.destroy()
+            break
 
 
-def editMachine():  # Screen to allow edits to made to machine information
-    global screen7
-    screen7 = Toplevel(screen)
-    screen7.title("Edit Machine")
-    screen7.geometry("300x250")
-    Label(screen7, text="Machine details").pack()
-    Label(screen7, text="").pack()
-    Label(screen7, text="Machine Name").pack()
-    Label(screen7, text="Enter Machine name").pack()
-    Label(screen7, text="").pack()
-    Label(screen7, text="Machine description").pack()
-    Label(screen7, text="Enter machine description").pack()
-    Label(screen7, text="").pack()
-    Button(screen7, text="Return", width=10, height=1, command=delete6).pack(side=LEFT)
-
-
-def edit():
-    editMachine()
-    screen5.destroy()
-
-
-def userPermission():  # Screen for giving the users permission
-    global screen8
-    screen8 = Toplevel(screen)
-    screen8.title("User Permissions")
-    screen8.geometry("700x400")
-    Label(screen8, text="User Permissions").grid(row=0, column=3)
-    Label(screen8, text="").grid(row=1)
-    global username_verify
-    global password_verify
-
-    name_verify = StringVar()
-    ID_verify = IntVar()
-
-    global name_entry1
-    global ID_entry1
-
-    Label(screen8, text="Enter Name").grid(row=2, column=2)
-    name_entry1 = Entry(screen8, textvariable=name_verify).grid(row=3, column=2)
-    Label(screen8, text="Enter Student ID").grid(row=2, column=4)
-    ID_entry1 = Entry(screen8, textvariable=ID_verify).grid(row=3, column=4)
-    Label(screen8, text="").grid(row=4)
-    Button(screen8, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2, command=card_read).grid(row=5, column=3)
-    Label(screen8, text="").grid(row=6)
-    Checkbutton(screen8, text="Machine Name 01").grid(row=7, column=2)
-    Checkbutton(screen8, text="Machine Name 02").grid(row=7, column=4)
-    Label(screen8, text="").grid(row=8)
-    Checkbutton(screen8, text="Machine Name 03").grid(row=9, column=2)
-    Checkbutton(screen8, text="Machine Name 04").grid(row=9, column=4)
-    Label(screen8, text="").grid(row=10)
-    Checkbutton(screen8, text="Machine Name 05").grid(row=11, column=2)
-    Checkbutton(screen8, text="Machine Name 06").grid(row=11, column=4)
-    Label(screen8, text="").grid(row=12)
-    Button(screen8, text="Return", width=10, height=1, command=delete7).grid(row=13)
-
-
-def permission():
-    userPermission()
-    screen5.destroy()
-
-
-def dashboard():  # Main screen after login, different options for user functionality
-    global screen5
-    screen5 = Toplevel(screen)
-    screen5.title("Dashboard")
-    screen5.geometry("400x300")
-    Label(screen5, text="Dashboard").pack()
-    Button(screen5, text="User Permissions", fg="black", width=30, height=2, command=permission).pack()
-    Label(screen5, text="").pack()
-    Button(screen5, text="Add a machine", fg="black", width=30, height=2).pack()
-    Label(screen5, text="").pack()
-    Button(screen5, text="Edit a Machine", fg="black", width=30, height=2, command=edit).pack()
-    Label(screen5, text="").pack()
-    Button(screen5, text="Choose a machine", fg="black", width=30, height=2, command=chooseMachine).pack()
-    Label(screen5, text="").pack()
-
-
-def login_success():
-    dashboard()
-    screen2.destroy()
+def student_permission_card_read():
+    while 1:
+        if reader.read.id():
+            id3 = reader.read()
+            print(str(id).strip())
+            student_permission()
+            screen1.destroy()
+            break
 
 
 def student_permission():  # screen for user to register their information in order to login
@@ -182,7 +106,8 @@ def student_permission():  # screen for user to register their information in or
     Label(screen1, text="Enter Student ID").grid(row=2, column=4)
     ID_entry1 = Entry(screen1, textvariable=ID_verify).grid(row=3, column=4)
     Label(screen1, text="").grid(row=4)
-    Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2, command=card_read).grid(row=5, column=3)
+    Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
+           command=student_permission_card_read).grid(row=5, column=3)
     Label(screen1, text="").grid(row=6)
     Checkbutton(screen1, text="Machine Name 01").grid(row=7, column=2)
     Checkbutton(screen1, text="Machine Name 02").grid(row=7, column=4)
@@ -222,7 +147,8 @@ def admin_register():  # screen for registering admin info
     Label(screen11, text="Enter Admin ID").grid(row=2, column=4)
     ID_entry2 = Entry(screen11, textvariable=ID_verify1).grid(row=3, column=4)
     Label(screen11, text="").grid(row=4)
-    Button(screen11, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2, command=card_read).grid(row=5, column=3)
+    Button(screen11, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
+           command=admin_register_card_read).grid(row=5, column=3)
     Label(screen11, text="").grid(row=6)
     Button(screen11, text="Return", width=10, height=1, command=delete9).grid(row=7)
 
@@ -240,7 +166,7 @@ def register_user():  # screen for initial RFID scanning
     Label(screen9, text="").grid(row=0)
     Label(screen9, text="").grid(row=1)
     Label(screen9, text="").grid(row=2)
-    Button(screen9, text="Scan ID", width=10, height=2, command=card_read).grid(row=3, column=4)
+    Button(screen9, text="Scan ID", width=10, height=2, command=register_user_card_read).grid(row=3, column=4)
     Label(screen9, text="").grid(row=4)
     Label(screen9, text="").grid(row=5)
     Label(screen9, text="").grid(row=6)
@@ -272,7 +198,7 @@ def register_admin_student():  # screen for deciding which to register, Admin or
     Button(screen10, text="Return", width=5, height=1, command=delete8).grid(row=7)
 
 
-def edit_admin_student():  # login screen to main window
+def edit_admin_student():  # decide if editing admin or student permissions
     global screen2
     screen2 = Toplevel(screen)
     screen2.title("Which are You Registering?")
@@ -295,7 +221,7 @@ def edit_user():
     Label(screen3, text="").grid(row=0)
     Label(screen3, text="").grid(row=1)
     Label(screen3, text="").grid(row=2)
-    Button(screen3, text="Scan ID", width=10, height=2, command=card_read).grid(row=3, column=4)
+    Button(screen3, text="Scan ID", width=10, height=2, command=edit_user_card_read).grid(row=3, column=4)
     Label(screen3, text="").grid(row=4)
     Label(screen3, text="").grid(row=5)
     Label(screen3, text="").grid(row=6)
