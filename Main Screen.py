@@ -7,40 +7,28 @@ reader = SimpleMFRC522()
 
 def delete1():
     screen2.destroy()
+    main_screen()
 
 
 def delete2():
     screen3.destroy()
+    main_screen()
 
 
-def delete4():
+def delete3():
     register_admin_student()
     screen1.destroy()
 
 
-def delete3():
-    screen3.destroy()
-
-
-def delete5():
-    dashboard()
-    screen6.destroy()
-
-
-def delete6():
-    dashboard()
-    screen7.destroy()
-
-
-def delete7():
+def delete4():
     screen9.destroy()
 
 
-def delete8():
+def delete5():
     screen10.destroy()
 
 
-def delete9():
+def delete6():
     register_admin_student()
     screen11.destroy()
 
@@ -85,7 +73,7 @@ def student_permission_card_read():
             break
 
 
-def student_permission():  # screen for user to register their information in order to login
+def student_register():  # screen for user to register their information in order to login
     global screen1
     screen1 = Toplevel(screen)
     screen1.title("Register")
@@ -118,11 +106,11 @@ def student_permission():  # screen for user to register their information in or
     Checkbutton(screen1, text="Machine Name 05").grid(row=11, column=2)
     Checkbutton(screen1, text="Machine Name 06").grid(row=11, column=4)
     Label(screen1, text="").grid(row=12)
-    Button(screen1, text="Return", width=10, height=1, command=delete4).grid(row=13)
+    Button(screen1, text="Return", width=10, height=1, command=delete3).grid(row=13)
 
 
 def student():
-    student_permission()
+    student_register()
     screen10.destroy()
 
 
@@ -150,7 +138,7 @@ def admin_register():  # screen for registering admin info
     Button(screen11, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=admin_register_card_read).grid(row=5, column=3)
     Label(screen11, text="").grid(row=6)
-    Button(screen11, text="Return", width=10, height=1, command=delete9).grid(row=7)
+    Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=7)
 
 
 def admin():
@@ -170,17 +158,7 @@ def register_user():  # screen for initial RFID scanning
     Label(screen9, text="").grid(row=4)
     Label(screen9, text="").grid(row=5)
     Label(screen9, text="").grid(row=6)
-    Button(screen9, text="Return", width=5, height=1, command=delete7).grid(row=7)
-
-
-def register_scan():
-    register_admin_student()
-    screen9.destroy()
-
-
-def edit_scan():
-    edit_admin_student()
-    screen3.destroy()
+    Button(screen9, text="Return", width=5, height=1, command=delete4).grid(row=7)
 
 
 def register_admin_student():  # screen for deciding which to register, Admin or Student
@@ -195,13 +173,13 @@ def register_admin_student():  # screen for deciding which to register, Admin or
     Button(screen10, text="Student", width=20, height=2, command=student).grid(row=4, column=3)
     Label(screen10, text="").grid(row=5)
     Label(screen10, text="").grid(row=6)
-    Button(screen10, text="Return", width=5, height=1, command=delete8).grid(row=7)
+    Button(screen10, text="Return", width=5, height=1, command=delete5).grid(row=7)
 
 
 def edit_admin_student():  # decide if editing admin or student permissions
     global screen2
     screen2 = Toplevel(screen)
-    screen2.title("Which are You Registering?")
+    screen2.title("Which are You Editing?")
     screen2.geometry("400x400")
     Label(screen2, text="").grid(row=0)
     Label(screen2, text="").grid(row=1)
@@ -213,7 +191,7 @@ def edit_admin_student():  # decide if editing admin or student permissions
     Button(screen2, text="Return", width=5, height=1, command=delete1).grid(row=7)
 
 
-def edit_user():
+def edit_user():  # Screen to accept scanning of ID
     global screen3
     screen3 = Toplevel(screen)
     screen3.title("Scan Now")
@@ -225,7 +203,7 @@ def edit_user():
     Label(screen3, text="").grid(row=4)
     Label(screen3, text="").grid(row=5)
     Label(screen3, text="").grid(row=6)
-    Button(screen3, text="Return", width=5, height=1, command=delete3).grid(row=7)
+    Button(screen3, text="Return", width=5, height=1, command=delete2).grid(row=7)
 
 
 def main_screen():
