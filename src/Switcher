@@ -1,4 +1,4 @@
-fo = open("~/Mach_Number", "r")
+fo = open("~/Mach_Number.txt", "r")
 num = fo.read()
 fo.close()
 if num == "MACH":
