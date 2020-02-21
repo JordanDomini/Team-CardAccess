@@ -1,5 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship
 
 Base = declarative_base()
@@ -66,7 +67,8 @@ class Admin(Base):
     User = relationship("users", back_populates='Admins')
 
     def __repr__(self):
-        return "<Admin(Num=%s , name='%s', rfid_tag='%s', active=%s)>" % (self.Num, self.Type, self.id)
+        return "<Admin(Num=%s , name='%s', rfid_tag='%s', active=%s)>" % (
+            self.Num, self.Type, self.id)
 
 
 class LabMachine(Base):
@@ -78,4 +80,14 @@ class LabMachine(Base):
 
     def __repr__(self):
         return "<LabMachine(Name=%s , Mach_num='%s', Current_user='%s')>" % (
-        self.Name, self.Mach_num, self.Current_user)
+            self.Name, self.Mach_num, self.Current_user)
+
+
+fo = open("/home/pi//Mach_Number")
+mach_num = fo.read().strip()
+user_id = "none"
+PWD = 'Nga4@G&KH64}.knJ'
+USR = fo.read()
+SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
+Base.metadata.create_all(engine)
