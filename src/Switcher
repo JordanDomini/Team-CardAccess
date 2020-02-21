@@ -1,7 +1,7 @@
 import os
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 my_file = os.path.join(THIS_FOLDER, 'Mach_Number.txt')
-fo = open("/~/Mach_Number")
+fo = open("~/Documents/Mach_Number")
 num = fo.read()
 fo.close()
 if num == "MACH":
