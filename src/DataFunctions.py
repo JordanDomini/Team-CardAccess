@@ -7,26 +7,28 @@ from sqlalchemy.orm import sessionmaker
 import time
 from mfrc522 import SimpleMFRC522
 
+fo = open("~/Mach_Number", "r")
 reader = SimpleMFRC522()
-mach_num = "MACH001"
+mach_num = fo.read()
 user_id = "none"
-PWD='123123123'
-USR='test_user'
+PWD = 'Nga4@G&KH64}.knJ'
+USR = fo.read()
 SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
+fo.close()
 
 # checks permissions of student or just if admin
 def check_user_permission(scanned_tag):
     session = Session()
     req_user = session.query(Student).filter_by(rfid_tag=scanned_tag).first
-    if req_user is not null:
+    if req_user:
         if exec("req_user.$s" % mach_num):
             return True
         else:
             return False
     req_user = session.query(Admin).filter_by(rfid_tag=scanned_tag).first
-    if req_user is not null:
+    if req_user:
         return True
     return False
 

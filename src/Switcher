@@ -1,0 +1,7 @@
+fo = open("~/Mach_Number", "r")
+num = fo.read()
+fo.close()
+if num == "MACH":
+    exec("sudo python3 ~/Team-CardAccess/src/Main\ Screen.py")
+else:
+    exec("sudo python3 ~/Team-CardAccess/src/old_tests/ImprovedPrototypeTest.py")
