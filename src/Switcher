@@ -1,7 +1,8 @@
 import os
+
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 my_file = os.path.join(THIS_FOLDER, 'Mach_Number.txt')
-fo = open(my_file)
+fo = open("/home/pi/Mach_Number.txt")
 num = fo.read()
 fo.close()
 if num == "MACH":
