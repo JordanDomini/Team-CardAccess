@@ -88,6 +88,6 @@ mach_num = fo.read().strip()
 user_id = "none"
 PWD = 'Nga4@G&KH64}.knJ'
 USR = fo.read()
-SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Base.metadata.create_all(engine)
