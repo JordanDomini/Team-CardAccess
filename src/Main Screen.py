@@ -145,10 +145,10 @@ def student_register():  # screen for user to register their information in orde
     Button(screen1, text="Enter", width=10, height=2,
            command=student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
                                mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(), mach009.get(),
-                               mach010.get()).grid(row=18, column=5)
+                               mach010.get())).grid(row=18, column=5)
 
 
-def student():
+def student_reg():
     student_register()
     screen10.destroy()
 
@@ -209,7 +209,7 @@ def register_admin_student():  # screen for deciding which to register, Admin or
     Label(screen10, text="").grid(row=1)
     Button(screen10, text="Admin", width=20, height=2, command=admin).grid(row=2, column=3)
     Label(screen10, text="").grid(row=3)
-    Button(screen10, text="Student", width=20, height=2, command=student).grid(row=4, column=3)
+    Button(screen10, text="Student", width=20, height=2, command=student_reg).grid(row=4, column=3)
     Label(screen10, text="").grid(row=5)
     Label(screen10, text="").grid(row=6)
     Button(screen10, text="Return", width=5, height=1, command=delete5).grid(row=7)
@@ -224,7 +224,7 @@ def edit_admin_student():  # decide if editing admin or student permissions
     Label(screen2, text="").grid(row=1)
     Button(screen2, text="Admin", width=20, height=2, command=admin).grid(row=2, column=3)
     Label(screen2, text="").grid(row=3)
-    Button(screen2, text="Student", width=20, height=2, command=student).grid(row=4, column=3)
+    Button(screen2, text="Student", width=20, height=2, command=student_reg).grid(row=4, column=3)
     Label(screen2, text="").grid(row=5)
     Label(screen2, text="").grid(row=6)
     Button(screen2, text="Return", width=5, height=1, command=delete1).grid(row=7)
