@@ -196,7 +196,7 @@ def admin_register():  # screen for registering admin info
     Label(screen11, text="").grid(row=6)
     Label(screen11, text="").grid(row=7)
     Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=8)
-    Button(screen1, text="Enter", width=10, height=2,
+    Button(screen11, text="Enter", width=10, height=2,
            command=lambda: admin_add(name_verify.get(), ID_verify.get())).grid(row=8, column=3)
 
 
