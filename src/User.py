@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Sequence
 from sqlalchemy import create_engine
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 
 Base = declarative_base()
 
@@ -49,7 +49,7 @@ class Student(Base):
     Mach009 = Column(Boolean, nullable=False)
     Mach010 = Column(Boolean, nullable=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    User = relationship("User", backref="student")
+    User = relationship("User", backref=backref("student", uselist=False))
 
     def __repr__(self):
         return "<Student(Num=%s , Type='%s', Mach001='%s', Mach002=%s, Mach003='%s', Mach004='%s', Mach005='%s', " \
