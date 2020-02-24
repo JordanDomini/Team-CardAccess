@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 import time
 from mfrc522 import SimpleMFRC522
 
-fo = open("/home/pi//Mach_Number")
+fo = open("/home/pi/Mach_Number")
 reader = SimpleMFRC522()
 mach_num = fo.read().strip()
 user_id = "none"
