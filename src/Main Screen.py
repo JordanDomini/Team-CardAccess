@@ -74,7 +74,7 @@ def student_permission_card_read():
         if reader.read():
             id, string = reader.read()
             print(str(id).strip())
-            Label(screen1, text="Please scan your id card!", fg="red").grid(row=6, column=3)
+            Label(screen1, text="ID scanned", fg="green").grid(row=6, column=3)
             break
 
 
