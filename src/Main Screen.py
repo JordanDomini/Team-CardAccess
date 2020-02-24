@@ -80,9 +80,9 @@ def student_permission_card_read():
 def admin_add(name, id_num):
     global id
     if id != "":
-        delete3()
-        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
-        admin_usr = User.Admin(Type=0, id=id_num)
+        delete6()
+        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
+        admin_usr = User.Admin(Type=1, id=id_num)
         dl.add_usr(user_usr)
         dl.add_usr(admin_usr)
         id = ""
