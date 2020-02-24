@@ -40,7 +40,7 @@ def register_user_card_read():
     global id
     while 1:
         if reader.read():
-            id = reader.read()
+            id,string = reader.read()
             register_admin_student()
             screen9.destroy()
             break
@@ -50,7 +50,7 @@ def edit_user_card_read():
     global id
     while 1:
         if reader.read():
-            id = reader.read()
+            id,string = reader.read()
             print(str(id).strip())
             edit_admin_student()
             screen3.destroy()
@@ -61,7 +61,7 @@ def admin_register_card_reader():
     global id
     while 1:
         if reader.read():
-            id = reader.read()
+            id,string = reader.read()
             print(str(id).strip())
             admin_register()
             screen11.destroy()
@@ -72,7 +72,7 @@ def student_permission_card_read():
     global id
     while 1:
         if reader.read():
-            id = reader.read()
+            id,string = reader.read()
             print(str(id).strip())
             screen1.destroy()
             break
@@ -95,7 +95,7 @@ def student_register():  # screen for user to register their information in orde
     global screen1
     screen1 = Toplevel(screen)
     screen1.title("Register")
-    screen1.geometry("700x400")
+    screen1.geometry("1100x600")
     Label(screen1, text="User Permissions").grid(row=0, column=3)
     Label(screen1, text="").grid(row=1)
     global name_verify
@@ -141,10 +141,10 @@ def student_register():  # screen for user to register their information in orde
     Checkbutton(screen1, text="Machine Name 10", variable=mach010).grid(row=15, column=4)
     Label(screen1, text="").grid(row=16)
     Button(screen1, text="Return", width=10, height=1, command=delete3).grid(row=17, column=1)
-    Button(screen1, text="Enter", width=10, height=1,
+    Button(screen1, text="Enter", width=10, height=2,
            command=student_add(name_entry1.get(), ID_entry1.get(), mach001.get(), mach002.get(), mach003.get(),
                                mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(), mach009.get(),
-                               mach010.get())).grid(row=17, column=3)
+                               mach010.get())).grid(row=17, column=5)
 
 
 def student():
