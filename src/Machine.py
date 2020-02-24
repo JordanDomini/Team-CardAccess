@@ -24,7 +24,7 @@ future = time.monotonic() + 1
 
 
 def Main():
-    global future
+    global future, i
     try:
         while True:  # making an infinite loop
             id, text = reader.read()  # waiting for id to be scanned
