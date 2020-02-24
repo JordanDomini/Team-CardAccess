@@ -1,8 +1,11 @@
 from tkinter import *
 import os
+import DataLayer as dl
+import User
 from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
+id = ""
 
 
 def delete1():
@@ -34,19 +37,20 @@ def delete6():
 
 
 def register_user_card_read():
-     while 1:
-         if reader.read_id():
-             id = reader.read()
-             print(str(id).strip())
-             register_admin_student()
-             screen9.destroy()
-             break
+    global id
+    while 1:
+        if reader.read_id():
+            id = reader.read()
+            register_admin_student()
+            screen9.destroy()
+            break
 
 
 def edit_user_card_read():
+    global id
     while 1:
         if reader.read_id():
-            id1 = reader.read()
+            id = reader.read()
             print(str(id).strip())
             edit_admin_student()
             screen3.destroy()
@@ -54,9 +58,10 @@ def edit_user_card_read():
 
 
 def admin_register_card_reader():
+    global id
     while 1:
         if reader.read.id():
-            id2 = reader.read()
+            id = reader.read()
             print(str(id).strip())
             admin_register()
             screen11.destroy()
@@ -64,13 +69,26 @@ def admin_register_card_reader():
 
 
 def student_permission_card_read():
+    global id
     while 1:
         if reader.read.id():
-            id3 = reader.read()
+            id = reader.read()
             print(str(id).strip())
-            student_permission()
             screen1.destroy()
             break
+
+
+def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009, mach010):
+    global id
+    if id != "":
+        delete3()
+        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
+        student_usr = User.Student(0, 0, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009,
+                                   mach010, id_num, user_usr)
+        dl.add_usr(student_usr)
+        id = ""
+    else:
+        Label(screen1, text="Please scan your id card!").grid(row=16, column=3)
 
 
 def student_register():  # screen for user to register their information in order to login
@@ -85,6 +103,16 @@ def student_register():  # screen for user to register their information in orde
 
     name_verify = StringVar()
     ID_verify = IntVar()
+    mach001 = IntVar()
+    mach002 = IntVar()
+    mach003 = IntVar()
+    mach004 = IntVar()
+    mach005 = IntVar()
+    mach006 = IntVar()
+    mach007 = IntVar()
+    mach008 = IntVar()
+    mach009 = IntVar()
+    mach010 = IntVar()
 
     global name_entry1
     global ID_entry1
@@ -97,16 +125,26 @@ def student_register():  # screen for user to register their information in orde
     Button(screen1, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=student_permission_card_read).grid(row=5, column=3)
     Label(screen1, text="").grid(row=6)
-    Checkbutton(screen1, text="Machine Name 01").grid(row=7, column=2)
-    Checkbutton(screen1, text="Machine Name 02").grid(row=7, column=4)
+    Checkbutton(screen1, text="Machine Name 01", variable=mach001).grid(row=7, column=2)
+    Checkbutton(screen1, text="Machine Name 02", variable=mach002).grid(row=7, column=4)
     Label(screen1, text="").grid(row=8)
-    Checkbutton(screen1, text="Machine Name 03").grid(row=9, column=2)
-    Checkbutton(screen1, text="Machine Name 04").grid(row=9, column=4)
+    Checkbutton(screen1, text="Machine Name 03", variable=mach003).grid(row=9, column=2)
+    Checkbutton(screen1, text="Machine Name 04", variable=mach004).grid(row=9, column=4)
     Label(screen1, text="").grid(row=10)
-    Checkbutton(screen1, text="Machine Name 05").grid(row=11, column=2)
-    Checkbutton(screen1, text="Machine Name 06").grid(row=11, column=4)
+    Checkbutton(screen1, text="Machine Name 05", variable=mach005).grid(row=11, column=2)
+    Checkbutton(screen1, text="Machine Name 06", variable=mach006).grid(row=11, column=4)
     Label(screen1, text="").grid(row=12)
-    Button(screen1, text="Return", width=10, height=1, command=delete3).grid(row=13)
+    Checkbutton(screen1, text="Machine Name 07", variable=mach007).grid(row=13, column=2)
+    Checkbutton(screen1, text="Machine Name 08", variable=mach008).grid(row=13, column=4)
+    Label(screen1, text="").grid(row=14)
+    Checkbutton(screen1, text="Machine Name 09", variable=mach009).grid(row=15, column=2)
+    Checkbutton(screen1, text="Machine Name 10", variable=mach010).grid(row=15, column=4)
+    Label(screen1, text="").grid(row=16)
+    Button(screen1, text="Return", width=10, height=1, command=delete3).grid(row=17, column=1)
+    Button(screen1, text="Enter", width=10, height=1,
+           command=student_add(name_entry1.get(), ID_entry1.get(), mach001.get(), mach002.get(), mach003.get(),
+                               mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(), mach009.get(),
+                               mach010.get())).grid(row=17, column=3)
 
 
 def student():

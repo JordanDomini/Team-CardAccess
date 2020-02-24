@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Sequence
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship
 
@@ -36,7 +36,7 @@ class User(Base):
 class Student(Base):
     __tablename__ = 'students'
 
-    Num = Column(Integer, primary_key=True)
+    Num = Column(Integer, primary_key=True, autoincrement=True)
     Type = Column(Integer, nullable=False)
     Mach001 = Column(Boolean, nullable=False)
     Mach002 = Column(Boolean, nullable=False)
@@ -91,4 +91,5 @@ PWD = 'eDVpY%!uQk4V@y6F'
 USR = 'root'
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@localhost/test_db'.format(USR, PWD)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
+Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
