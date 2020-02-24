@@ -23,7 +23,7 @@ def check_user_permission(scanned_tag):
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     req_student = session.query(User.Student).filter_by(id=req_user.id).first()
     if req_student:
-        if exec("req_student.$s" % mach_num):
+        if exec("req_student.{}".format(mach_num)):
             return True
         else:
             return False
