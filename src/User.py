@@ -75,7 +75,7 @@ user_id = None
 # PWD = 'Nga4@G&KH64}.knJ'
 PWD = 'eDVpY%!uQk4V@y6F'
 USR = 'root'
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@localhost/test_db'.format(USR, PWD)
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
