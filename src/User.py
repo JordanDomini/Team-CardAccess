@@ -37,7 +37,7 @@ class Student(Base):
     __tablename__ = 'students'
 
     Num = Column(Integer, primary_key=True)
-    Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
+    Type = Column(Integer, nullable=False)
     Mach001 = Column(Boolean, nullable=False)
     Mach002 = Column(Boolean, nullable=False)
     Mach003 = Column(Boolean, nullable=False)
@@ -62,7 +62,7 @@ class Admin(Base):
     __tablename__ = 'admins'
 
     Num = Column(Integer, primary_key=True)
-    Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
+    Type = Column(Integer, nullable=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
     User = relationship("users", back_populates='Admins')
 
