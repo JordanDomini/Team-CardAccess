@@ -84,7 +84,8 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
         delete3()
         user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
         student_usr = User.Student(0, 0, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009,
-                                   mach010, id_num, user_usr)
+                                   mach010, id_num)
+        dl.add_usr(user_usr)
         dl.add_usr(student_usr)
         id = ""
     else:
