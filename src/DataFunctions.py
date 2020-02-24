@@ -14,7 +14,7 @@ USR = "MACH"
 if mach_num == "MACH":
     IP = 'localhost'
 else:
-    IP = '10.250.250.250'
+    IP = '10.250.250.250:3306'
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/test_db'.format(USR, PWD, IP)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
