@@ -39,7 +39,7 @@ def delete6():
 def register_user_card_read():
     global id
     while 1:
-        if reader.read_id():
+        if reader.read():
             id = reader.read()
             register_admin_student()
             screen9.destroy()
@@ -49,7 +49,7 @@ def register_user_card_read():
 def edit_user_card_read():
     global id
     while 1:
-        if reader.read_id():
+        if reader.read():
             id = reader.read()
             print(str(id).strip())
             edit_admin_student()
@@ -60,7 +60,7 @@ def edit_user_card_read():
 def admin_register_card_reader():
     global id
     while 1:
-        if reader.read.id():
+        if reader.read():
             id = reader.read()
             print(str(id).strip())
             admin_register()
@@ -71,7 +71,7 @@ def admin_register_card_reader():
 def student_permission_card_read():
     global id
     while 1:
-        if reader.read.id():
+        if reader.read():
             id = reader.read()
             print(str(id).strip())
             screen1.destroy()
