@@ -11,10 +11,7 @@ mach_num = fo.read().strip()
 user_id = "none"
 PWD = 'Nga4@G&KH64}.knJ'
 USR = "MACH"
-if mach_num == "MACH":
-    IP = 'localhost'
-else:
-    IP = '10.250.250.250:3306'
+IP = '10.250.250.250'
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/test_db'.format(USR, PWD, IP)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
@@ -25,61 +22,62 @@ fo.close()
 def check_user_permission(scanned_tag):
     session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
-    req_student = session.query(User.Student).filter_by(id=req_user.id).first()
-    if req_student:
-        if mach_num == "Mach001":
-            if req_student.Mach001:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach002":
-            if req_student.Mach002:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach003":
-            if req_student.Mach003:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach004":
-            if req_student.Mach004:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach005":
-            if req_student.Mach005:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach006":
-            if req_student.Mach006:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach007":
-            if req_student.Mach007:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach008":
-            if req_student.Mach008:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach009":
-            if req_student.Mach009:
-                return True
-            else:
-                return False
-        elif mach_num == "Mach010":
-            if req_student.Mach010:
-                return True
-            else:
-                return False
-    req_admin = session.query(User.Admin).filter_by(id=req_user.id).first()
-    if req_admin:
-        return True
+    if req_user:
+        req_student = session.query(User.Student).filter_by(id=req_user.id).first()
+        if req_student:
+            if mach_num == "Mach001":
+                if req_student.Mach001:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach002":
+                if req_student.Mach002:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach003":
+                if req_student.Mach003:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach004":
+                if req_student.Mach004:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach005":
+                if req_student.Mach005:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach006":
+                if req_student.Mach006:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach007":
+                if req_student.Mach007:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach008":
+                if req_student.Mach008:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach009":
+                if req_student.Mach009:
+                    return True
+                else:
+                    return False
+            elif mach_num == "Mach010":
+                if req_student.Mach010:
+                    return True
+                else:
+                    return False
+        req_admin = session.query(User.Admin).filter_by(id=req_user.id).first()
+        if req_admin:
+            return True
     return False
 
 
