@@ -25,13 +25,16 @@ try:
         id, text = reader.read()      # waiting for id to be scanned
         while time.monotonic() < future:
             if reader.read():
-                if time.monotonic() < future:
+                if time.monotonic() > future:
                     id, string = reader.read()
                     GPIO.output(red_led, 0)
                     GPIO.output(green_led, 0)
                     break
                 else:
                     future = time.monotonic() + 1
+                    GPIO.output(red_led, 1)
+                    GPIO.output(green_led, 0)
+
         if '470495939090' in str(id):        # if id is correct
             if i == 0:                # check if the system is off
                 print("\nTurning on.")

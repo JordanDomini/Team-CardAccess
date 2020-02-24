@@ -1,6 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Sequence
+from sqlalchemy import create_engine
+from sqlalchemy.orm import relationship, backref
 
 Base = declarative_base()
 
@@ -19,36 +20,23 @@ class User(Base):
     def __repr__(self):
         return "<User(id=%s , name='%s', rfid_tag='%s', active=%s)>" % (self.id, self.name, self.rfid_tag, self.active)
 
-    def get_user_name(self):
-        return self.user_name
-
-    def get_user_id(self):
-        return self.user_id
-
-    def get_rfid_tag(self):
-        return self.rfid_tag
-
-    def get_type(self):
-        return self.type_num
-
-
 class Student(Base):
     __tablename__ = 'students'
 
-    Num = Column(Integer, primary_key=True)
-    Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
-    Mach001 = Column(Boolean, nullable=False)
-    Mach002 = Column(Boolean, nullable=False)
-    Mach003 = Column(Boolean, nullable=False)
-    Mach004 = Column(Boolean, nullable=False)
-    Mach005 = Column(Boolean, nullable=False)
-    Mach006 = Column(Boolean, nullable=False)
-    Mach007 = Column(Boolean, nullable=False)
-    Mach008 = Column(Boolean, nullable=False)
-    Mach009 = Column(Boolean, nullable=False)
-    Mach010 = Column(Boolean, nullable=False)
+    Num = Column(Integer, primary_key=True, autoincrement=True)
+    Type = Column(Integer, nullable=False, default=0)
+    Mach001 = Column(Boolean, nullable=False, default=False)
+    Mach002 = Column(Boolean, nullable=False, default=False)
+    Mach003 = Column(Boolean, nullable=False, default=False)
+    Mach004 = Column(Boolean, nullable=False, default=False)
+    Mach005 = Column(Boolean, nullable=False, default=False)
+    Mach006 = Column(Boolean, nullable=False, default=False)
+    Mach007 = Column(Boolean, nullable=False, default=False)
+    Mach008 = Column(Boolean, nullable=False, default=False)
+    Mach009 = Column(Boolean, nullable=False, default=False)
+    Mach010 = Column(Boolean, nullable=False, default=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    User = relationship("users", back_populates='Students')
+    user = relationship("User", backref=backref("student", uselist=False))
 
     def __repr__(self):
         return "<Student(Num=%s , Type='%s', Mach001='%s', Mach002=%s, Mach003='%s', Mach004='%s', Mach005='%s', " \
@@ -61,12 +49,12 @@ class Admin(Base):
     __tablename__ = 'admins'
 
     Num = Column(Integer, primary_key=True)
-    Type = Column(Integer, ForeignKey("users.Type"), nullable=False)
+    Type = Column(Integer, nullable=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    User = relationship("users", back_populates='Admins')
+    user = relationship("User", backref=backref("admin", uselist=False))
 
     def __repr__(self):
-        return "<Admin(Num=%s , name='%s', rfid_tag='%s', active=%s)>" % (self.Num, self.Type, self.id)
+        return "<Admin(Num=%s , name='%s', rfid_tag='%s')>" % (self.Num, self.Type, self.id)
 
 
 class LabMachine(Base):
@@ -78,4 +66,16 @@ class LabMachine(Base):
 
     def __repr__(self):
         return "<LabMachine(Name=%s , Mach_num='%s', Current_user='%s')>" % (
-        self.Name, self.Mach_num, self.Current_user)
+            self.Name, self.Mach_num, self.Current_user)
+
+
+# fo = open("/home/pi/Mach_Number.txt")
+# mach_num = fo.read().strip()
+# user_id = None
+# # PWD = 'Nga4@G&KH64}.knJ'
+# PWD = 'eDVpY%!uQk4V@y6F'
+# USR = 'root'
+# SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@localhost/test_db'.format(USR, PWD)
+# engine = create_engine(SQLALCHEMY_DATABASE_URI)
+# Base.metadata.drop_all(engine)
+# Base.metadata.create_all(engine)
