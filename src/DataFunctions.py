@@ -11,7 +11,11 @@ mach_num = fo.read().strip()
 user_id = "none"
 PWD = 'Nga4@G&KH64}.knJ'
 USR = "MACH"
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@localhost/test_db'.format(USR, PWD)
+if mach_num == "MACH":
+    IP = 'localhost'
+else:
+    IP = '10.250.250.250'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/test_db'.format(USR, PWD, IP)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
 fo.close()
