@@ -63,7 +63,7 @@ def admin_register_card_read():
         if reader.read():
             id, string = reader.read()
             print(str(id).strip())
-            Label(screen1, text="ID scanned", fg="green").grid(row=6, column=3)
+            Label(screen11, text="ID scanned", fg="green").grid(row=6, column=3)
             break
 
 
@@ -102,7 +102,7 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
         dl.add_usr(user_usr)
         dl.add_usr(student_usr)
         id = ""
-        Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=2)
+        Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=3)
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
@@ -197,7 +197,7 @@ def admin_register():  # screen for registering admin info
     Label(screen11, text="").grid(row=7)
     Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=8)
     Button(screen11, text="Enter", width=10, height=2,
-           command=lambda: admin_add(name_verify.get(), ID_verify.get())).grid(row=8, column=3)
+           command=lambda: admin_add(name_verify1.get(), ID_verify1.get())).grid(row=8, column=3)
 
 
 def admin():
