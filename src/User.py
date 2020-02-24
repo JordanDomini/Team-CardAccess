@@ -69,7 +69,7 @@ class LabMachine(Base):
             self.Name, self.Mach_num, self.Current_user)
 
 
-fo = open("/home/pi/Mach_Number")
+fo = open("/home/pi/Mach_Number.txt")
 mach_num = fo.read().strip()
 user_id = None
 # PWD = 'Nga4@G&KH64}.knJ'
