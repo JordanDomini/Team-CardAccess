@@ -34,6 +34,7 @@ def Main():
                         id, string = reader.read()
                         GPIO.output(red_led, 0)
                         GPIO.output(green_led, 0)
+                        break
                     else:
                         future = time.monotonic() + 1
             if reader.read():
