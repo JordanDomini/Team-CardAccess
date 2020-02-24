@@ -17,6 +17,8 @@ GPIO.setup(relay, GPIO.OUT)
 
 reader = SimpleMFRC522()
 i = 0
+id = ""
+prev_id=""
 GPIO.output(relay, 0)
 GPIO.output(red_led, 1)
 GPIO.output(green_led, 0)
@@ -24,7 +26,7 @@ future = time.monotonic() + 1
 
 
 def Main():
-    global future, i
+    global future, i, id, prev_id
     try:
         while True:  # making an infinite loop
             id, text = reader.read()  # waiting for id to be scanned
@@ -45,16 +47,26 @@ def Main():
                     GPIO.output(relay, 1)
                     GPIO.output(green_led, 1)
                     GPIO.output(red_led, 0)
+                    prev_id = id
                     i = 1
-                elif i == 1:  # check if the system is on
+                elif i == 1 and id == prev_id:  # check if the system is on
                     print("\nTurning off.")
                     GPIO.output(relay, 0)
                     GPIO.output(red_led, 1)
                     GPIO.output(green_led, 0)
                     i = 0
                 else:
-                    GPIO.output(31, 1)
-                time.sleep(1)
+                    GPIO.output(red_led, 1)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 0)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 1)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 0)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 1)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 0)
                 future = time.monotonic() + 1
     except:
         GPIO.cleanup()
