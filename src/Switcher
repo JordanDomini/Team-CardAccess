@@ -6,4 +6,4 @@ fo.close()
 if num.strip() == "MACH":
     os.system("sudo python3 /home/pi/Team-CardAccess/Main\ Screen.py")
 else:
-    os.system("sudo python3 old_tests/ImprovedPrototypeTest.py")
+    os.system("sudo python3 old_tests/Machine.py")
