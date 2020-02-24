@@ -143,8 +143,9 @@ def student_register():  # screen for user to register their information in orde
     Label(screen1, text="").grid(row=17)
     Button(screen1, text="Return", width=10, height=1, command=delete3).grid(row=18, column=1)
     Button(screen1, text="Enter", width=10, height=2,
-           command=student_add(name_verify, ID_verify, mach001, mach002, mach003, mach004, mach005, mach006, mach007,
-                               mach008, mach009, mach010)).grid(row=18, column=5)
+           command=student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
+                               mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(), mach009.get(),
+                               mach010.get())).grid(row=18, column=5)
 
 
 def student():
