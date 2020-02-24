@@ -174,7 +174,7 @@ def admin_register():  # screen for registering admin info
     global screen11
     screen11 = Toplevel(screen)
     screen11.title("Register")
-    screen11.geometry("800x400")
+    screen11.geometry("900x400")
     Label(screen11, text="Admin Info").grid(row=0, column=3)
     Label(screen11, text="").grid(row=1)
     global name_verify1
