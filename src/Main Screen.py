@@ -86,7 +86,7 @@ def admin_add(name, id_num):
         dl.add_usr(user_usr)
         dl.add_usr(admin_usr)
         id = ""
-        Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=2)
+        Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=3)
     else:
         Label(screen11, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
@@ -174,7 +174,7 @@ def admin_register():  # screen for registering admin info
     global screen11
     screen11 = Toplevel(screen)
     screen11.title("Register")
-    screen11.geometry("700x400")
+    screen11.geometry("800x400")
     Label(screen11, text="Admin Info").grid(row=0, column=3)
     Label(screen11, text="").grid(row=1)
     global name_verify1
@@ -194,7 +194,10 @@ def admin_register():  # screen for registering admin info
     Button(screen11, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=admin_register_card_read).grid(row=5, column=3)
     Label(screen11, text="").grid(row=6)
-    Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=7)
+    Label(screen11, text="").grid(row=7)
+    Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=8)
+    Button(screen1, text="Enter", width=10, height=2,
+           command=lambda: admin_add(name_verify.get(), ID_verify.get())).grid(row=8, column=3)
 
 
 def admin():
