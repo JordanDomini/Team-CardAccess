@@ -57,14 +57,13 @@ def edit_user_card_read():
             break
 
 
-def admin_register_card_reader():
+def admin_register_card_read():
     global id
     while 1:
         if reader.read():
             id, string = reader.read()
             print(str(id).strip())
-            admin_register()
-            screen11.destroy()
+            Label(screen1, text="ID scanned", fg="green").grid(row=6, column=3)
             break
 
 
@@ -78,6 +77,20 @@ def student_permission_card_read():
             break
 
 
+def admin_add(name, id_num):
+    global id
+    if id != "":
+        delete3()
+        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
+        admin_usr = User.Admin(Type=0, id=id_num)
+        dl.add_usr(user_usr)
+        dl.add_usr(admin_usr)
+        id = ""
+        Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=2)
+    else:
+        Label(screen11, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
+
+
 def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009, mach010):
     global id
     if id != "":
@@ -89,8 +102,9 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
         dl.add_usr(user_usr)
         dl.add_usr(student_usr)
         id = ""
+        Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=2)
     else:
-        Label(screen1, text="Please scan your id card!", fg="red").grid(row=6, column=3)
+        Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
 
 def student_register():  # screen for user to register their information in order to login

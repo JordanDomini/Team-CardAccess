@@ -20,19 +20,6 @@ class User(Base):
     def __repr__(self):
         return "<User(id=%s , name='%s', rfid_tag='%s', active=%s)>" % (self.id, self.name, self.rfid_tag, self.active)
 
-    def get_user_name(self):
-        return self.user_name
-
-    def get_user_id(self):
-        return self.user_id
-
-    def get_rfid_tag(self):
-        return self.rfid_tag
-
-    def get_type(self):
-        return self.type_num
-
-
 class Student(Base):
     __tablename__ = 'students'
 
@@ -67,8 +54,7 @@ class Admin(Base):
     user = relationship("User", backref=backref("admin", uselist=False))
 
     def __repr__(self):
-        return "<Admin(Num=%s , name='%s', rfid_tag='%s', active=%s)>" % (
-            self.Num, self.Type, self.id)
+        return "<Admin(Num=%s , name='%s', rfid_tag='%s')>" % (self.Num, self.Type, self.id)
 
 
 class LabMachine(Base):
