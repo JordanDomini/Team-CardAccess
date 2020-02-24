@@ -40,7 +40,7 @@ def register_user_card_read():
     global id
     while 1:
         if reader.read():
-            id,string = reader.read()
+            id, string = reader.read()
             register_admin_student()
             screen9.destroy()
             break
@@ -50,7 +50,7 @@ def edit_user_card_read():
     global id
     while 1:
         if reader.read():
-            id,string = reader.read()
+            id, string = reader.read()
             print(str(id).strip())
             edit_admin_student()
             screen3.destroy()
@@ -61,7 +61,7 @@ def admin_register_card_reader():
     global id
     while 1:
         if reader.read():
-            id,string = reader.read()
+            id, string = reader.read()
             print(str(id).strip())
             admin_register()
             screen11.destroy()
@@ -72,9 +72,9 @@ def student_permission_card_read():
     global id
     while 1:
         if reader.read():
-            id,string = reader.read()
+            id, string = reader.read()
             print(str(id).strip())
-            screen1.destroy()
+            Label(screen1, text="Please scan your id card!", fg="red").grid(row=6, column=3)
             break
 
 
@@ -90,7 +90,7 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
         dl.add_usr(student_usr)
         id = ""
     else:
-        Label(screen1, text="Please scan your id card!").grid(row=16, column=3)
+        Label(screen1, text="Please scan your id card!", fg="red").grid(row=6, column=3)
 
 
 def student_register():  # screen for user to register their information in order to login
@@ -145,9 +145,10 @@ def student_register():  # screen for user to register their information in orde
     Label(screen1, text="").grid(row=17)
     Button(screen1, text="Return", width=10, height=1, command=delete3).grid(row=18, column=1)
     Button(screen1, text="Enter", width=10, height=2,
-           command=student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
-                               mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(), mach009.get(),
-                               mach010.get())).grid(row=18, column=5)
+           command=lambda: student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
+                                       mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
+                                       mach009.get(),
+                                       mach010.get())).grid(row=18, column=5)
 
 
 def student_reg():
