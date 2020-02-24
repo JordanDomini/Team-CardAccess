@@ -34,7 +34,7 @@ def Main():
                         break
                     else:
                         future = time.monotonic() + 1
-            if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is not 0:  # if id is correct
+            if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is True:  # if id is correct
                 if i == 0:  # check if the system is off
                     print("\nTurning on.")
                     GPIO.output(26, 0)
