@@ -20,14 +20,14 @@ fo.close()
 # checks permissions of student or just if admin
 def check_user_permission(scanned_tag):
     session = Session()
-    req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first
-    req_student = session.query(User.Student).filter_by(id=req_user.id).first
+    req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
+    req_student = session.query(User.Student).filter_by(id=req_user.id).first()
     if req_student:
         if exec("req_student.$s" % mach_num):
             return True
         else:
             return False
-    req_admin = session.query(User.Admin).filter_by(id=req_user.id).first
+    req_admin = session.query(User.Admin).filter_by(id=req_user.id).first()
     if req_admin:
         return True
     return False
