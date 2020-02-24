@@ -49,7 +49,7 @@ class Student(Base):
     Mach009 = Column(Boolean, nullable=False)
     Mach010 = Column(Boolean, nullable=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    User = relationship("User", backref=backref("student", uselist=False))
+    user = relationship(User, backref=backref("student", uselist=False))
 
     def __repr__(self):
         return "<Student(Num=%s , Type='%s', Mach001='%s', Mach002=%s, Mach003='%s', Mach004='%s', Mach005='%s', " \

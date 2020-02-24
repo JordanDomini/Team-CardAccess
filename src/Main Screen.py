@@ -83,7 +83,8 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
     if id != "":
         delete3()
         user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
-        student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004, Mach005=mach005, Mach006=mach006, Mach007=mach007, Mach008=mach008, Mach009=mach009,
+        student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
+                                   Mach005=mach005, Mach006=mach006, Mach007=mach007, Mach008=mach008, Mach009=mach009,
                                    Mach010=mach010, id=id_num)
         dl.add_usr(user_usr)
         dl.add_usr(student_usr)
