@@ -29,7 +29,6 @@ try:
                     id, string = reader.read()
                     GPIO.output(red_led, 0)
                     GPIO.output(green_led, 0)
-                    break
                 else:
                     future = time.monotonic() + 1
         if '470495939090' in str(id):        # if id is correct
