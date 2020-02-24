@@ -42,13 +42,15 @@ def Main():
             if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is True:  # if id is correct
                 if i == 0:  # check if the system is off
                     print("\nTurning on.")
-                    GPIO.output(26, 0)
-                    GPIO.output(29, 0)
+                    GPIO.output(relay, 1)
+                    GPIO.output(green_led, 1)
+                    GPIO.output(red_led, 0)
                     i = 1
                 elif i == 1:  # check if the system is on
                     print("\nTurning off.")
-                    GPIO.output(26, 1)
-                    GPIO.output(29, 1)
+                    GPIO.output(relay, 0)
+                    GPIO.output(red_led, 1)
+                    GPIO.output(green_led, 0)
                     i = 0
                 else:
                     GPIO.output(31, 1)
