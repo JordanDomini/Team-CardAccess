@@ -7,7 +7,8 @@ from mfrc522 import SimpleMFRC522
 reader = SimpleMFRC522()
 id = ""
 
-
+# all of the "delete" defs below are linked to the return buttons of various windows to allow users
+# to backtrack if need be
 def delete1():
     screen2.destroy()
     main_screen()
@@ -35,7 +36,7 @@ def delete6():
     register_admin_student()
     screen11.destroy()
 
-
+# Used for scanning IDS in the "Register User" window
 def register_user_card_read():
     global id
     while 1:
@@ -45,7 +46,7 @@ def register_user_card_read():
             screen9.destroy()
             break
 
-
+# Used for scanning IDs in the "Edit User" window
 def edit_user_card_read():
     global id
     while 1:
@@ -56,7 +57,7 @@ def edit_user_card_read():
             screen3.destroy()
             break
 
-
+# Used for scanning IDs in the "admin register" window
 def admin_register_card_read():
     global id
     while 1:
@@ -66,7 +67,7 @@ def admin_register_card_read():
             Label(screen1, text="ID scanned", fg="green").grid(row=6, column=3)
             break
 
-
+# Used for scanning IDs in the "student permissions" window
 def student_permission_card_read():
     global id
     while 1:
@@ -106,8 +107,9 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
-
-def student_register():  # screen for user to register their information in order to login
+# screen for user to register their information in order to login. This is where the student
+# permissions will be allocated
+def student_register():
     global screen1
     screen1 = Toplevel(screen)
     screen1.title("Register")
@@ -164,13 +166,13 @@ def student_register():  # screen for user to register their information in orde
                                        mach009.get(),
                                        mach010.get())).grid(row=18, column=5)
 
-
+# This is used to close the "Register" window should the user click the "Student" button
 def student_reg():
     student_register()
     screen10.destroy()
 
-
-def admin_register():  # screen for registering admin info
+# Screen for registering admin info
+def admin_register():
     global screen11
     screen11 = Toplevel(screen)
     screen11.title("Register")
@@ -196,13 +198,13 @@ def admin_register():  # screen for registering admin info
     Label(screen11, text="").grid(row=6)
     Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=7)
 
-
+# This is used to close the "Register" window should the user click the "Admin" button
 def admin():
     admin_register()
     screen10.destroy()
 
-
-def register_user():  # screen for initial RFID scanning
+# screen for initial ID scanning for access to the register window
+def register_user():
     global screen9
     screen9 = Toplevel(screen)
     screen9.title("Scan Now")
@@ -216,8 +218,8 @@ def register_user():  # screen for initial RFID scanning
     Label(screen9, text="").grid(row=6)
     Button(screen9, text="Return", width=5, height=1, command=delete4).grid(row=7)
 
-
-def register_admin_student():  # screen for deciding which to register, Admin or Student
+# screen for deciding which to register, Admin or Student
+def register_admin_student():
     global screen10
     screen10 = Toplevel(screen)
     screen10.title("Which are You Registering?")
@@ -231,8 +233,8 @@ def register_admin_student():  # screen for deciding which to register, Admin or
     Label(screen10, text="").grid(row=6)
     Button(screen10, text="Return", width=5, height=1, command=delete5).grid(row=7)
 
-
-def edit_admin_student():  # decide if editing admin or student permissions
+# window to decide if editing admin or student permissions
+def edit_admin_student():
     global screen2
     screen2 = Toplevel(screen)
     screen2.title("Which are You Editing?")
@@ -246,8 +248,8 @@ def edit_admin_student():  # decide if editing admin or student permissions
     Label(screen2, text="").grid(row=6)
     Button(screen2, text="Return", width=5, height=1, command=delete1).grid(row=7)
 
-
-def edit_user():  # Screen to accept scanning of ID
+# Screen to accept scanning of ID for access to the next window
+def edit_user():
     global screen3
     screen3 = Toplevel(screen)
     screen3.title("Scan Now")
