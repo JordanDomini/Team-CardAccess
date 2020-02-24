@@ -84,7 +84,7 @@ def check_user_permission(scanned_tag):
 # checks the user type
 def check_user_level(scanned_tag):
     session = Session()
-    req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first
+    req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         if req_user.Type == 1:
             return True
