@@ -85,9 +85,9 @@ class LabMachine(Base):
 
 fo = open("/home/pi//Mach_Number")
 mach_num = fo.read().strip()
-user_id = "none"
+user_id = None
 PWD = 'Nga4@G&KH64}.knJ'
 USR = fo.read()
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@localhost/test_db'.format(USR, PWD)
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Base.metadata.create_all(engine)
