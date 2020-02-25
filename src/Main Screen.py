@@ -37,7 +37,7 @@ def delete6():
 
 
 def register_user_card_read():
-    # global id
+    global id
     # while 1:
     #     if reader.read():
     #         id, string = reader.read()
