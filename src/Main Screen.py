@@ -37,13 +37,16 @@ def delete6():
 
 
 def register_user_card_read():
-    global id
-    while 1:
-        if reader.read():
-            id, string = reader.read()
-            register_admin_student()
-            screen9.destroy()
-            break
+    # global id
+    # while 1:
+    #     if reader.read():
+    #         id, string = reader.read()
+    #         if dl.check_lvl(str(id).strip()):
+    #             register_admin_student()
+    #             screen9.destroy()
+    #         else:
+    #             Label(screen3, text="User does not have admin access", fg="red").grid(row=4, column=4)
+    #         break
 
 
 def edit_user_card_read():
@@ -82,7 +85,7 @@ def admin_add(name, id_num):
     if id != "":
         delete6()
         user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
-        admin_usr = User.Admin(Type=1, id=id_num)
+        admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
         dl.add_usr(user_usr)
         dl.add_usr(admin_usr)
         id = ""
@@ -98,7 +101,7 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
         user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
         student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
                                    Mach005=mach005, Mach006=mach006, Mach007=mach007, Mach008=mach008, Mach009=mach009,
-                                   Mach010=mach010, id=id_num)
+                                   Mach010=mach010, id=id_num, user=user_usr)
         dl.add_usr(user_usr)
         dl.add_usr(student_usr)
         id = ""
