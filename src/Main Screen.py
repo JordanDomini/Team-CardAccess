@@ -85,11 +85,11 @@ def student_permission_card_read():
 def admin_add(name, id_num):
     global id
     if id != "":
-        delete6()
         user_usr = dl.get_usr(id)
         if user_usr:
             Label(screen11, text="User already registered.", fg="red").grid(row=6, column=3)
         else:
+            delete6()
             user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
             admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
             dl.add_usr(user_usr)
@@ -103,11 +103,11 @@ def admin_add(name, id_num):
 def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009, mach010):
     global id
     if id != "":
-        delete3()
         user_usr = dl.get_usr(id)
         if user_usr:
             Label(screen1, text="User already registered.", fg="red").grid(row=6, column=3)
         else:
+            delete3()
             user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
             student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
                                    Mach005=mach005, Mach006=mach006, Mach007=mach007, Mach008=mach008, Mach009=mach009,
