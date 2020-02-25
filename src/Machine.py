@@ -67,6 +67,7 @@ def Main():
                     GPIO.output(red_led, 1)
                     time.sleep(0.2)
                     GPIO.output(red_led, 0)
+                future = time.monotonic() + 1
             else:
                 GPIO.output(red_led, 0)
                 time.sleep(0.2)

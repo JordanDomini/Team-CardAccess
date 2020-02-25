@@ -38,17 +38,17 @@ def delete6():
 
 def register_user_card_read():
     global id
-    # while 1:
-    #     if reader.read():
-    #         id, string = reader.read()
-    #         if dl.check_lvl(str(id).strip()):
-    #             register_admin_student()
-    #             screen9.destroy()
-    #         else:
-    #             Label(screen3, text="User does not have admin access", fg="red").grid(row=4, column=4)
-    #         break
-    register_admin_student()
-    screen9.destroy()
+    while 1:
+        if reader.read():
+            id, string = reader.read()
+            if dl.check_lvl(str(id).strip()):
+                register_admin_student()
+                screen9.destroy()
+            else:
+                Label(screen3, text="User does not have admin access", fg="red").grid(row=4, column=4)
+            break
+    # register_admin_student()
+    # screen9.destroy()
 
 
 def edit_user_card_read():
@@ -86,12 +86,16 @@ def admin_add(name, id_num):
     global id
     if id != "":
         delete6()
-        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
-        admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
-        dl.add_usr(user_usr)
-        dl.add_usr(admin_usr)
+        user_usr = dl.get_usr(id)
+        if user_usr:
+            Label(screen11, text="User already registered.", fg="red").grid(row=6, column=3)
+        else:
+            user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
+            admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
+            dl.add_usr(user_usr)
+            dl.add_usr(admin_usr)
+            Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=3)
         id = ""
-        Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=3)
     else:
         Label(screen11, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
@@ -100,14 +104,18 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
     global id
     if id != "":
         delete3()
-        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
-        student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
+        user_usr = dl.get_usr(id)
+        if user_usr:
+            Label(screen1, text="User already registered.", fg="red").grid(row=6, column=3)
+        else:
+            user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
+            student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
                                    Mach005=mach005, Mach006=mach006, Mach007=mach007, Mach008=mach008, Mach009=mach009,
                                    Mach010=mach010, id=id_num, user=user_usr)
-        dl.add_usr(user_usr)
-        dl.add_usr(student_usr)
+            dl.add_usr(user_usr)
+            dl.add_usr(student_usr)
+            Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=3)
         id = ""
-        Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=3)
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 

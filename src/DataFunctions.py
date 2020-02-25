@@ -97,11 +97,7 @@ def check_user_level(scanned_tag):
 # gets user
 def get_user(scanned_tag):
     session = Session()
-    type = check_user_level(scanned_tag)
-    if type == 0:
-        return session.query(User.Student).filter_by(rfid_tag=scanned_tag)
-    elif type > 0:
-        return session.query(User.Admin).filter_by(rfid_tag=scanned_tag)
+    return session.query(User.User).filter_by(rfid_tag=scanned_tag)
 
 
 # adds user to db using an existing object
