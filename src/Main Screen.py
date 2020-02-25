@@ -45,7 +45,7 @@ def register_user_card_read():
                 register_admin_student()
                 screen9.destroy()
             else:
-                Label(screen3, text="User does not have admin access", fg="red").grid(row=4, column=4)
+                Label(screen3, text="User does not have admin access.", fg="red").grid(row=4, column=4)
             break
     # register_admin_student()
     # screen9.destroy()

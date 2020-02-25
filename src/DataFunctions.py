@@ -109,19 +109,9 @@ def addUser(user_info):
 
 
 # edit the rfid tag of an existing user
-def edit_rfid_tag(id_num):
-    session = Session()  # starts the connected session
-    type = check_user_level()  # checks the user's type
-    if type == 0:  # for type student
-        # mapper query to filter by id number and get first result
-        req_user = session.query(User.Student).filter_by(id=id_num).first
-    else:  # for admin
-        # mapper query to filter by id number and get first result
-        req_user = session.query(User.Admin).filter_by(id=id_num).first
-    while True:  # making an infinite loop
-        id, text = reader.read()  # waiting for id to be scanned
-        if reader.read():
-            id, string = reader.read()  # gets the rfid tag
-            req_user.rfid_tag = str(id).strip()  # assigns the tag to the user profile
-            session.commit()  # commits the changes
-            break  # breaks infinite loop
+# def edit_user(user_info):
+#     session = Session()  # starts the connected session
+#     type = check_user_level()  # checks the user's type
+#     if type == 0:  # for type student
+#         # mapper query to filter by id number and get first result
+#         req_user = session.query(User.Uer).filter_by(id=user_info.id).first()
