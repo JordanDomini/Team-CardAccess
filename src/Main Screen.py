@@ -42,9 +42,14 @@ def register_user_card_read():
     while 1:
         if reader.read():
             id, string = reader.read()
-            register_admin_student()
-            screen9.destroy()
+            if dl.check_lvl(str(id).strip()):
+                register_admin_student()
+                screen9.destroy()
+            else:
+                Label(screen3, text="User does not have admin access.", fg="red").grid(row=4, column=4)
             break
+    # register_admin_student()
+    # screen9.destroy()
 
 # Used for scanning IDs in the "Edit User" window
 def edit_user_card_read():
@@ -64,7 +69,7 @@ def admin_register_card_read():
         if reader.read():
             id, string = reader.read()
             print(str(id).strip())
-            Label(screen1, text="ID scanned", fg="green").grid(row=6, column=3)
+            Label(screen11, text="ID scanned", fg="green").grid(row=6, column=3)
             break
 
 # Used for scanning IDs in the "student permissions" window
@@ -81,13 +86,17 @@ def student_permission_card_read():
 def admin_add(name, id_num):
     global id
     if id != "":
-        delete3()
-        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
-        admin_usr = User.Admin(Type=0, id=id_num)
-        dl.add_usr(user_usr)
-        dl.add_usr(admin_usr)
+        user_usr = dl.get_usr(id)
+        if user_usr:
+            Label(screen11, text="User already registered.", fg="red").grid(row=6, column=3)
+        else:
+            delete6()
+            user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
+            admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
+            dl.add_usr(user_usr)
+            dl.add_usr(admin_usr)
+            Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=3)
         id = ""
-        Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=2)
     else:
         Label(screen11, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
@@ -95,15 +104,19 @@ def admin_add(name, id_num):
 def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009, mach010):
     global id
     if id != "":
-        delete3()
-        user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
-        student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
+        user_usr = dl.get_usr(id)
+        if user_usr:
+            Label(screen1, text="User already registered.", fg="red").grid(row=6, column=3)
+        else:
+            delete3()
+            user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=0, active=True)
+            student_usr = User.Student(Type=0, Mach001=mach001, Mach002=mach002, Mach003=mach003, Mach004=mach004,
                                    Mach005=mach005, Mach006=mach006, Mach007=mach007, Mach008=mach008, Mach009=mach009,
-                                   Mach010=mach010, id=id_num)
-        dl.add_usr(user_usr)
-        dl.add_usr(student_usr)
+                                   Mach010=mach010, id=id_num, user=user_usr)
+            dl.add_usr(user_usr)
+            dl.add_usr(student_usr)
+            Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=3)
         id = ""
-        Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=2)
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
@@ -176,7 +189,7 @@ def admin_register():
     global screen11
     screen11 = Toplevel(screen)
     screen11.title("Register")
-    screen11.geometry("700x400")
+    screen11.geometry("900x400")
     Label(screen11, text="Admin Info").grid(row=0, column=3)
     Label(screen11, text="").grid(row=1)
     global name_verify1
@@ -196,7 +209,10 @@ def admin_register():
     Button(screen11, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=admin_register_card_read).grid(row=5, column=3)
     Label(screen11, text="").grid(row=6)
-    Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=7)
+    Label(screen11, text="").grid(row=7)
+    Button(screen11, text="Return", width=10, height=1, command=delete6).grid(row=8)
+    Button(screen11, text="Enter", width=10, height=2,
+           command=lambda: admin_add(name_verify1.get(), ID_verify1.get())).grid(row=8, column=3)
 
 # This is used to close the "Register" window should the user click the "Admin" button
 def admin():

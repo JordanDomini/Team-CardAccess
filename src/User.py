@@ -24,17 +24,17 @@ class Student(Base):
     __tablename__ = 'students'
 
     Num = Column(Integer, primary_key=True, autoincrement=True)
-    Type = Column(Integer, nullable=False, default=0)
-    Mach001 = Column(Boolean, nullable=False, default=False)
-    Mach002 = Column(Boolean, nullable=False, default=False)
-    Mach003 = Column(Boolean, nullable=False, default=False)
-    Mach004 = Column(Boolean, nullable=False, default=False)
-    Mach005 = Column(Boolean, nullable=False, default=False)
-    Mach006 = Column(Boolean, nullable=False, default=False)
-    Mach007 = Column(Boolean, nullable=False, default=False)
-    Mach008 = Column(Boolean, nullable=False, default=False)
-    Mach009 = Column(Boolean, nullable=False, default=False)
-    Mach010 = Column(Boolean, nullable=False, default=False)
+    Type = Column(Integer, nullable=False)
+    Mach001 = Column(Boolean, nullable=False)
+    Mach002 = Column(Boolean, nullable=False)
+    Mach003 = Column(Boolean, nullable=False)
+    Mach004 = Column(Boolean, nullable=False)
+    Mach005 = Column(Boolean, nullable=False)
+    Mach006 = Column(Boolean, nullable=False)
+    Mach007 = Column(Boolean, nullable=False)
+    Mach008 = Column(Boolean, nullable=False)
+    Mach009 = Column(Boolean, nullable=False)
+    Mach010 = Column(Boolean, nullable=False)
     id = Column(Integer, ForeignKey("users.id"), nullable=False)
     user = relationship("User", backref=backref("student", uselist=False))
 
@@ -71,11 +71,10 @@ class LabMachine(Base):
 
 # fo = open("/home/pi/Mach_Number.txt")
 # mach_num = fo.read().strip()
-# user_id = None
-# # PWD = 'Nga4@G&KH64}.knJ'
-# PWD = 'eDVpY%!uQk4V@y6F'
-# USR = 'root'
-# SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@localhost/test_db'.format(USR, PWD)
+# PWD = 'Nga4@G&KH64}.knJ'
+# # PWD = 'eDVpY%!uQk4V@y6F'
+# USR = 'MACH'
+# SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
 # engine = create_engine(SQLALCHEMY_DATABASE_URI)
 # Base.metadata.drop_all(engine)
 # Base.metadata.create_all(engine)
