@@ -49,7 +49,7 @@ def Main():
                     GPIO.output(red_led, 0)
                     prev_id = id
                     i = 1
-                elif i == 1 and id == prev_id:  # check if the system is on
+                elif i == 1 and (id == prev_id or dl.check_lvl(str(id).strip())):  # check if the system is on
                     print("\nTurning off.")
                     GPIO.output(relay, 0)
                     GPIO.output(red_led, 1)
