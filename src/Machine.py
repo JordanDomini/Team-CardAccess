@@ -41,7 +41,7 @@ def Main():
                         future = time.monotonic() + 1
             if reader.read():
                 id, string = reader.read()
-            if dl.check_usr(str(id).strip()):  # if id is correct
+            if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()):  # if id is correct
                 if i == 0:  # check if the system is off
                     print("\nTurning on.")
                     GPIO.output(relay, 1)
