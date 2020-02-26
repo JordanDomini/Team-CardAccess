@@ -36,6 +36,16 @@ def delete6():
     register_admin_student()
     screen11.destroy()
 
+
+def delete7():
+    screen4.destroy()
+    edit_admin_student()
+
+
+def delete8():
+    screen5.destroy()
+    edit_admin_student()
+
 # Used for scanning IDS in the "Register User" window
 def register_user_card_read():
     global id
@@ -214,10 +224,7 @@ def admin_register():
     Button(screen11, text="Enter", width=10, height=2,
            command=lambda: admin_add(name_verify1.get(), ID_verify1.get())).grid(row=8, column=3)
 
-# This is used to close the "Register" window should the user click the "Admin" button
-def admin():
-    admin_register()
-    screen10.destroy()
+
 
 # screen for initial ID scanning for access to the register window
 def register_user():
@@ -257,12 +264,55 @@ def edit_admin_student():
     screen2.geometry("400x400")
     Label(screen2, text="").grid(row=0)
     Label(screen2, text="").grid(row=1)
-    Button(screen2, text="Admin", width=20, height=2, command=admin).grid(row=2, column=3)
+    Button(screen2, text="Admin", width=20, height=2, command=admin_enter_id).grid(row=2, column=3)
     Label(screen2, text="").grid(row=3)
-    Button(screen2, text="Student", width=20, height=2, command=student_reg).grid(row=4, column=3)
+    Button(screen2, text="Student", width=20, height=2, command=student_enter_id).grid(row=4, column=3)
     Label(screen2, text="").grid(row=5)
     Label(screen2, text="").grid(row=6)
     Button(screen2, text="Return", width=5, height=1, command=delete1).grid(row=7)
+
+
+def admin_enter_id():
+    global screen4
+    global ID_verify2
+
+    ID_verify2 = IntVar()
+
+    global admin_id
+    screen4 = Toplevel(screen)
+    screen4.title("Enter ID")
+    screen4.geometry("400x400")
+    Label(screen4, text="").grid(row=0)
+    Label(screen4, text="").grid(row=1)
+    Label(screen4, text="Enter ID").grid(row=2, column=2)
+    admin_id = Entry(screen4, textvariable=ID_verify2).grid(row=2, column=3)
+    Label(screen4, text="").grid(row=3)
+    Label(screen4, text="").grid(row=4)
+    Button(screen4, text="Return", width=5, height=1, command=delete7).grid(row=5)
+
+
+def student_enter_id():
+    global screen5
+    global ID_verify3
+
+    ID_verify3 = IntVar()
+
+    global student_id
+    screen5 = Toplevel(screen)
+    screen5.title("Enter ID")
+    screen5.geometry("400x400")
+    Label(screen5, text="").grid(row=0)
+    Label(screen5, text="").grid(row=1)
+    Label(screen5, text="Enter ID").grid(row=2, column=2)
+    student_id = Entry(screen5, textvariable=ID_verify3).grid(row=2, column=3)
+    Label(screen5, text="").grid(row=3)
+    Label(screen5, text="").grid(row=4)
+    Button(screen5, text="Return", width=5, height=1, command=delete8).grid(row=5)
+
+# This is used to close the "Register" window should the user click the "Admin" button
+def admin():
+    admin_register()
+    screen10.destroy()
 
 # Screen to accept scanning of ID for access to the next window
 def edit_user():
