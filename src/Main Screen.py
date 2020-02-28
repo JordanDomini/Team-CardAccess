@@ -290,6 +290,18 @@ def student_edit(req_user, req_role):
     mach008 = IntVar()
     mach009 = IntVar()
     mach010 = IntVar()
+    name_verify.set(req_user.name)
+    ID_verify.set(req_user.id)
+    mach001.set(req_role.Mach001)
+    mach002.set(req_role.Mach002)
+    mach003.set(req_role.Mach003)
+    mach004.set(req_role.Mach004)
+    mach005.set(req_role.Mach005)
+    mach006.set(req_role.Mach006)
+    mach007.set(req_role.Mach007)
+    mach008.set(req_role.Mach008)
+    mach009.set(req_role.Mach009)
+    mach010.set(req_role.Mach010)
 
     global name_entry1
     global ID_entry1
@@ -297,32 +309,54 @@ def student_edit(req_user, req_role):
     Label(screen6, text="Enter Name").grid(row=2, column=2)
     name_entry1 = Entry(screen6, textvariable=name_verify).grid(row=3, column=2)
     Label(screen6, text="Enter Student ID").grid(row=2, column=4)
-    ID_entry1 = Entry(screen6, textvariable=ID_verify).grid(row=3, column=4)
+    ID_entry1 = Entry(screen6, textvariable=ID_verify, state="disabled").grid(row=3, column=4)
     Label(screen6, text="").grid(row=4)
     Button(screen6, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=student_permission_card_read).grid(row=5, column=3)
     Label(screen6, text="").grid(row=6)
     Label(screen6, text="").grid(row=7)
-    Checkbutton(screen6, text="Machine Name 01", variable=mach001).grid(row=8, column=2)
-    Checkbutton(screen6, text="Machine Name 02", variable=mach002).grid(row=8, column=4)
+    but1 = Checkbutton(screen6, text="Machine Name 01", variable=mach001).grid(row=8, column=2)
+    but2 = Checkbutton(screen6, text="Machine Name 02", variable=mach002).grid(row=8, column=4)
     Label(screen6, text="").grid(row=9)
-    Checkbutton(screen6, text="Machine Name 03", variable=mach003).grid(row=10, column=2)
-    Checkbutton(screen6, text="Machine Name 04", variable=mach004).grid(row=10, column=4)
+    but3 = Checkbutton(screen6, text="Machine Name 03", variable=mach003).grid(row=10, column=2)
+    but4 = Checkbutton(screen6, text="Machine Name 04", variable=mach004).grid(row=10, column=4)
     Label(screen6, text="").grid(row=11)
-    Checkbutton(screen6, text="Machine Name 05", variable=mach005).grid(row=12, column=2)
-    Checkbutton(screen6, text="Machine Name 06", variable=mach006).grid(row=12, column=4)
+    but5 = Checkbutton(screen6, text="Machine Name 05", variable=mach005).grid(row=12, column=2)
+    but6 = Checkbutton(screen6, text="Machine Name 06", variable=mach006).grid(row=12, column=4)
     Label(screen6, text="").grid(row=13)
-    Checkbutton(screen6, text="Machine Name 07", variable=mach007).grid(row=14, column=2)
-    Checkbutton(screen6, text="Machine Name 08", variable=mach008).grid(row=14, column=4)
+    but7 = Checkbutton(screen6, text="Machine Name 07", variable=mach007).grid(row=14, column=2)
+    but8 = Checkbutton(screen6, text="Machine Name 08", variable=mach008).grid(row=14, column=4)
     Label(screen6, text="").grid(row=15)
-    Checkbutton(screen6, text="Machine Name 09", variable=mach009).grid(row=16, column=2)
-    Checkbutton(screen6, text="Machine Name 10", variable=mach010).grid(row=16, column=4)
+    but9 = Checkbutton(screen6, text="Machine Name 09", variable=mach009).grid(row=16, column=2)
+    but10 = Checkbutton(screen6, text="Machine Name 10", variable=mach010).grid(row=16, column=4)
     Label(screen6, text="").grid(row=17)
     Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=18, column=1)
     Button(screen6, text="Enter", width=10, height=2,
            command=lambda: student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
                                        mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
                                        mach009.get(), mach010.get())).grid(row=18, column=5)
+    name_entry1.insert(0, req_user.name)
+    ID_entry1.insert(0, req_user.id)
+    if req_role.Mach001:
+        but1.select()
+    elif req_role.Mach002:
+        but2.select()
+    elif req_role.Mach003:
+        but3.select()
+    elif req_role.Mach004:
+        but4.select()
+    elif req_role.Mach005:
+        but5.select()
+    elif req_role.Mach006:
+        but6.select()
+    elif req_role.Mach007:
+        but7.select()
+    elif req_role.Mach008:
+        but8.select()
+    elif req_role.Mach009:
+        but9.select()
+    elif req_role.Mach010:
+        but10.select()
 
 
 def admin_edit(req_user, req_role):
