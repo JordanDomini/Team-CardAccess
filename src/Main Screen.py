@@ -517,7 +517,7 @@ def edit_user():
     screen3.title("Scan Now")
     w, h = 300, 250
     screen3.geometry('%dx%d+%d+%d' % (
-    w, h, ((screen3.winfo_screenwidt3() / 2) - (w / 2)), ((screen3.winfo_screenheight() / 2) - (h / 2))))
+    w, h, ((screen3.winfo_screenwidth() / 2) - (w / 2)), ((screen3.winfo_screenheight() / 2) - (h / 2))))
     Label(screen3, text="").grid(row=0)
     Label(screen3, text="").grid(row=1)
     Label(screen3, text="").grid(row=2)
