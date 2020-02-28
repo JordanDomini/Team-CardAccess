@@ -518,7 +518,7 @@ def admin_enter_id():
     Label(screen4, text="").grid(row=3)
     Label(screen4, text="").grid(row=4)
     Button(screen4, text="Return", width=5, height=1, command=delete7).grid(row=5, column=0)
-    Button(screen4, text="Enter", width=5, height=2, command=lambda: admin_get(ID_verify2.get())).grid(row=5, column=2)
+    Button(screen4, text="Enter", width=5, height=2, command=lambda: admin_get(ID_verify2.get())).grid(row=5, column=3)
 
 
 def student_enter_id():
