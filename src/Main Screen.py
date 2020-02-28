@@ -179,105 +179,13 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
 
-def student_edit():
-    global screen6
-    screen1 = Toplevel(screen)
-    screen1.title("Edit")
-    w, h = 1000, 600
-    screen1.geometry('%dx%d+%d+%d' % (
-    w, h, ((screen6.winfo_screenwidth() / 2) - (w / 2)), ((screen6.winfo_screenheight() / 2) - (h / 2))))
-    Label(screen1, text="User Permissions").grid(row=0, column=3)
-    Label(screen1, text="").grid(row=1)
-    global name_verify
-    global ID_verify
-
-    name_verify = StringVar()
-    ID_verify = IntVar()
-    mach001 = IntVar()
-    mach002 = IntVar()
-    mach003 = IntVar()
-    mach004 = IntVar()
-    mach005 = IntVar()
-    mach006 = IntVar()
-    mach007 = IntVar()
-    mach008 = IntVar()
-    mach009 = IntVar()
-    mach010 = IntVar()
-
-    global name_entry1
-    global ID_entry1
-
-    Label(screen6, text="Enter Name").grid(row=2, column=2)
-    name_entry1 = Entry(screen6, textvariable=name_verify).grid(row=3, column=2)
-    Label(screen6, text="Enter Student ID").grid(row=2, column=4)
-    ID_entry1 = Entry(screen6, textvariable=ID_verify).grid(row=3, column=4)
-    Label(screen6, text="").grid(row=4)
-    Button(screen6, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
-           command=student_permission_card_read).grid(row=5, column=3)
-    Label(screen6, text="").grid(row=6)
-    Label(screen6, text="").grid(row=7)
-    Checkbutton(screen6, text="Machine Name 01", variable=mach001).grid(row=8, column=2)
-    Checkbutton(screen6, text="Machine Name 02", variable=mach002).grid(row=8, column=4)
-    Label(screen6, text="").grid(row=9)
-    Checkbutton(screen6, text="Machine Name 03", variable=mach003).grid(row=10, column=2)
-    Checkbutton(screen6, text="Machine Name 04", variable=mach004).grid(row=10, column=4)
-    Label(screen6, text="").grid(row=11)
-    Checkbutton(screen6, text="Machine Name 05", variable=mach005).grid(row=12, column=2)
-    Checkbutton(screen6, text="Machine Name 06", variable=mach006).grid(row=12, column=4)
-    Label(screen6, text="").grid(row=13)
-    Checkbutton(screen6, text="Machine Name 07", variable=mach007).grid(row=14, column=2)
-    Checkbutton(screen6, text="Machine Name 08", variable=mach008).grid(row=14, column=4)
-    Label(screen6, text="").grid(row=15)
-    Checkbutton(screen6, text="Machine Name 09", variable=mach009).grid(row=16, column=2)
-    Checkbutton(screen6, text="Machine Name 10", variable=mach010).grid(row=16, column=4)
-    Label(screen6, text="").grid(row=17)
-    Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=18, column=1)
-    Button(screen6, text="Enter", width=10, height=2,
-           command=lambda: student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
-                                       mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
-                                       mach009.get(),
-                                       mach010.get())).grid(row=18, column=5)
-
-
-def admin_edit():
-    global screen7
-    screen7 = Toplevel(screen)
-    screen7.title("Edit")
-    w, h = 900, 400
-    screen7.geometry('%dx%d+%d+%d' % (
-    w, h, ((screen7.winfo_screenwidth() / 2) - (w / 2)), ((screen7.winfo_screenheight() / 2) - (h / 2))))
-    Label(screen7, text="Admin Info").grid(row=0, column=3)
-    Label(screen7, text="").grid(row=1)
-    global name_verify1
-    global ID_verify1
-
-    name_verify1 = StringVar()
-    ID_verify1 = IntVar()
-
-    global name_entry2
-    global ID_entry2
-
-    Label(screen7, text="Enter Name").grid(row=2, column=2)
-    name_entry2 = Entry(screen7, textvariable=name_verify1).grid(row=3, column=2)
-    Label(screen7, text="Enter Admin ID").grid(row=2, column=4)
-    ID_entry2 = Entry(screen7, textvariable=ID_verify1).grid(row=3, column=4)
-    Label(screen7, text="").grid(row=4)
-    Button(screen7, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
-           command=admin_register_card_read).grid(row=5, column=3)
-    Label(screen7, text="").grid(row=6)
-    Label(screen7, text="").grid(row=7)
-    Button(screen7, text="Return", width=10, height=1, command=delete10).grid(row=8)
-    Button(screen7, text="Enter", width=10, height=2,
-           command=lambda: admin_add(name_verify1.get(), ID_verify1.get())).grid(row=8, column=3)
-
-
 # screen for user to register their information in order to login. This is where the student
 # permissions will be allocated
 def student_edit(req_user, req_role):
     global screen6
     screen6 = Toplevel(screen)
     screen6.title("Edit")
-    w, h = 1000, 600
+    w, h = 950, 500
     screen6.geometry('%dx%d+%d+%d' % (
     w, h, ((screen6.winfo_screenwidth() / 2) - (w / 2)), ((screen6.winfo_screenheight() / 2) - (h / 2))))
     Label(screen6, text="User Permissions").grid(row=0, column=3)
@@ -370,7 +278,7 @@ def admin_edit(req_user, req_role):
     global screen7
     screen7 = Toplevel(screen)
     screen7.title("Edit")
-    w, h = 900, 400
+    w, h = 900, 300
     screen7.geometry('%dx%d+%d+%d' % (
     w, h, ((screen7.winfo_screenwidth() / 2) - (w / 2)), ((screen7.winfo_screenheight() / 2) - (h / 2))))
     Label(screen7, text="Admin Info").grid(row=0, column=3)
@@ -406,7 +314,7 @@ def student_register():
     global screen1
     screen1 = Toplevel(screen)
     screen1.title("Register")
-    w, h = 1000, 600
+    w, h = 950, 500
     screen1.geometry('%dx%d+%d+%d' % (
     w, h, ((screen1.winfo_screenwidth() / 2) - (w / 2)), ((screen1.winfo_screenheight() / 2) - (h / 2))))
     Label(screen1, text="User Permissions").grid(row=0, column=3)
@@ -472,7 +380,7 @@ def admin_register():
     global screen11
     screen11 = Toplevel(screen)
     screen11.title("Register")
-    w, h = 900, 400
+    w, h = 900, 300
     screen11.geometry('%dx%d+%d+%d' % (
     w, h, ((screen11.winfo_screenwidth() / 2) - (w / 2)), ((screen11.winfo_screenheight() / 2) - (h / 2))))
     Label(screen11, text="Admin Info").grid(row=0, column=3)
@@ -523,7 +431,7 @@ def register_admin_student():
     global screen10
     screen10 = Toplevel(screen)
     screen10.title("Which are You Registering?")
-    w, h = 400, 400
+    w, h = 350, 350
     screen10.geometry('%dx%d+%d+%d' % (
     w, h, ((screen10.winfo_screenwidth() / 2) - (w / 2)), ((screen10.winfo_screenheight() / 2) - (h / 2))))
     Label(screen10, text="").grid(row=0)
@@ -563,7 +471,7 @@ def admin_enter_id():
     global admin_id
     screen4 = Toplevel(screen)
     screen4.title("Enter ID")
-    w, h = 400, 400
+    w, h = 300, 250
     screen4.geometry('%dx%d+%d+%d' % (
     w, h, ((screen4.winfo_screenwidth() / 2) - (w / 2)), ((screen4.winfo_screenheight() / 2) - (h / 2))))
     Label(screen4, text="").grid(row=0)
@@ -585,7 +493,7 @@ def student_enter_id():
     global student_id
     screen5 = Toplevel(screen)
     screen5.title("Enter ID")
-    w, h = 400, 400
+    w, h = 300, 250
     screen5.geometry('%dx%d+%d+%d' % (w, h, ((screen5.winfo_screenwidth() / 2) - (w / 2)), ((screen5.winfo_screenheight() / 2) - (h / 2))))
     Label(screen5, text="").grid(row=0)
     Label(screen5, text="").grid(row=1)
@@ -609,7 +517,7 @@ def edit_user():
     screen3.title("Scan Now")
     w, h = 300, 250
     screen3.geometry('%dx%d+%d+%d' % (
-    w, h, ((screen5.winfo_screenwidt3() / 2) - (w / 2)), ((screen3.winfo_screenheight() / 2) - (h / 2))))
+    w, h, ((screen3.winfo_screenwidt3() / 2) - (w / 2)), ((screen3.winfo_screenheight() / 2) - (h / 2))))
     Label(screen3, text="").grid(row=0)
     Label(screen3, text="").grid(row=1)
     Label(screen3, text="").grid(row=2)
