@@ -6,6 +6,8 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 id = ""
+screen_width = screen.winfo_screenwidth()
+screen_height = screen.winfo_screenheight()
 
 
 # all of the "delete" defs below are linked to the return buttons of various windows to allow users
@@ -599,7 +601,12 @@ def edit_user():
 def main_screen():
     global screen
     screen = Tk()
-    screen.geometry("300x250+810+415")
+    w = 300
+    h = 250
+    # calculate position x and y coordinates
+    x = (screen_width / 2) - (w / 2)
+    y = (screen_height / 2) - (h / 2)
+    screen.geometry('%dx%d+%d+%d' % (w, h, x, y))
     screen.title("Main Screen")
     Label(text="Main Screen", bg="grey", width="300", height="2", font=("Calibri", 13)).pack()
     Label(text="").pack()
