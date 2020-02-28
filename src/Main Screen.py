@@ -183,7 +183,9 @@ def student_edit():
     global screen6
     screen1 = Toplevel(screen)
     screen1.title("Edit")
-    screen1.geometry("1000x600")
+    w, h = 1000, 600
+    screen1.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen6.winfo_screenwidth() / 2) - (w / 2)), ((screen6.winfo_screenheight() / 2) - (h / 2))))
     Label(screen1, text="User Permissions").grid(row=0, column=3)
     Label(screen1, text="").grid(row=1)
     global name_verify
@@ -239,11 +241,13 @@ def student_edit():
 
 def admin_edit():
     global screen7
-    screen11 = Toplevel(screen)
-    screen11.title("Edit")
-    screen11.geometry("900x400")
-    Label(screen11, text="Admin Info").grid(row=0, column=3)
-    Label(screen11, text="").grid(row=1)
+    screen7 = Toplevel(screen)
+    screen7.title("Edit")
+    w, h = 900, 400
+    screen7.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen7.winfo_screenwidth() / 2) - (w / 2)), ((screen7.winfo_screenheight() / 2) - (h / 2))))
+    Label(screen7, text="Admin Info").grid(row=0, column=3)
+    Label(screen7, text="").grid(row=1)
     global name_verify1
     global ID_verify1
 
@@ -273,7 +277,9 @@ def student_edit(req_user, req_role):
     global screen6
     screen6 = Toplevel(screen)
     screen6.title("Edit")
-    screen6.geometry("1000x600")
+    w, h = 1000, 600
+    screen6.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen6.winfo_screenwidth() / 2) - (w / 2)), ((screen6.winfo_screenheight() / 2) - (h / 2))))
     Label(screen6, text="User Permissions").grid(row=0, column=3)
     Label(screen6, text="").grid(row=1)
     global name_verify
@@ -364,7 +370,9 @@ def admin_edit(req_user, req_role):
     global screen7
     screen7 = Toplevel(screen)
     screen7.title("Edit")
-    screen7.geometry("900x400")
+    w, h = 900, 400
+    screen7.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen7.winfo_screenwidth() / 2) - (w / 2)), ((screen7.winfo_screenheight() / 2) - (h / 2))))
     Label(screen7, text="Admin Info").grid(row=0, column=3)
     Label(screen7, text="").grid(row=1)
 
@@ -398,7 +406,9 @@ def student_register():
     global screen1
     screen1 = Toplevel(screen)
     screen1.title("Register")
-    screen1.geometry("1000x600")
+    w, h = 1000, 600
+    screen1.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen1.winfo_screenwidth() / 2) - (w / 2)), ((screen1.winfo_screenheight() / 2) - (h / 2))))
     Label(screen1, text="User Permissions").grid(row=0, column=3)
     Label(screen1, text="").grid(row=1)
     global name_verify
@@ -462,7 +472,9 @@ def admin_register():
     global screen11
     screen11 = Toplevel(screen)
     screen11.title("Register")
-    screen11.geometry("900x400")
+    w, h = 900, 400
+    screen11.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen11.winfo_screenwidth() / 2) - (w / 2)), ((screen11.winfo_screenheight() / 2) - (h / 2))))
     Label(screen11, text="Admin Info").grid(row=0, column=3)
     Label(screen11, text="").grid(row=1)
     global name_verify1
@@ -493,7 +505,9 @@ def register_user():
     global screen9
     screen9 = Toplevel(screen)
     screen9.title("Scan Now")
-    screen9.geometry("300x250")
+    w, h = 300, 250
+    screen9.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen9.winfo_screenwidth() / 2) - (w / 2)), ((screen9.winfo_screenheight() / 2) - (h / 2))))
     Label(screen9, text="").grid(row=0)
     Label(screen9, text="").grid(row=1)
     Label(screen9, text="").grid(row=2)
@@ -509,7 +523,9 @@ def register_admin_student():
     global screen10
     screen10 = Toplevel(screen)
     screen10.title("Which are You Registering?")
-    screen10.geometry("400x400")
+    w, h = 400, 400
+    screen10.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen10.winfo_screenwidth() / 2) - (w / 2)), ((screen10.winfo_screenheight() / 2) - (h / 2))))
     Label(screen10, text="").grid(row=0)
     Label(screen10, text="").grid(row=1)
     Button(screen10, text="Admin", width=20, height=2, command=admin).grid(row=2, column=3)
@@ -525,7 +541,9 @@ def edit_admin_student():
     global screen2
     screen2 = Toplevel(screen)
     screen2.title("Which are You Editing?")
-    screen2.geometry("400x400")
+    w, h = 400, 400
+    screen2.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen2.winfo_screenwidth() / 2) - (w / 2)), ((screen2.winfo_screenheight() / 2) - (h / 2))))
     Label(screen2, text="").grid(row=0)
     Label(screen2, text="").grid(row=1)
     Button(screen2, text="Admin", width=20, height=2, command=admin_enter_id).grid(row=2, column=3)
@@ -545,7 +563,9 @@ def admin_enter_id():
     global admin_id
     screen4 = Toplevel(screen)
     screen4.title("Enter ID")
-    screen4.geometry("400x400")
+    w, h = 400, 400
+    screen4.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen4.winfo_screenwidth() / 2) - (w / 2)), ((screen4.winfo_screenheight() / 2) - (h / 2))))
     Label(screen4, text="").grid(row=0)
     Label(screen4, text="").grid(row=1)
     Label(screen4, text="Enter ID").grid(row=2, column=2)
@@ -565,7 +585,8 @@ def student_enter_id():
     global student_id
     screen5 = Toplevel(screen)
     screen5.title("Enter ID")
-    screen5.geometry("400x400")
+    w, h = 400, 400
+    screen5.geometry('%dx%d+%d+%d' % (w, h, ((screen5.winfo_screenwidth() / 2) - (w / 2)), ((screen5.winfo_screenheight() / 2) - (h / 2))))
     Label(screen5, text="").grid(row=0)
     Label(screen5, text="").grid(row=1)
     Label(screen5, text="Enter ID").grid(row=2, column=2)
@@ -586,7 +607,9 @@ def edit_user():
     global screen3
     screen3 = Toplevel(screen)
     screen3.title("Scan Now")
-    screen3.geometry("300x250")
+    w, h = 300, 250
+    screen3.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen5.winfo_screenwidt3() / 2) - (w / 2)), ((screen3.winfo_screenheight() / 2) - (h / 2))))
     Label(screen3, text="").grid(row=0)
     Label(screen3, text="").grid(row=1)
     Label(screen3, text="").grid(row=2)
@@ -600,14 +623,9 @@ def edit_user():
 def main_screen():
     global screen
     screen = Tk()
-    w = 300
-    h = 250
-    ws = screen.winfo_screenwidth()
-    hs = screen.winfo_screenheight()
-    # calculate position x and y coordinates
-    x = (ws / 2) - (w / 2)
-    y = (hs / 2) - (h / 2)
-    screen.geometry('%dx%d+%d+%d' % (w, h, x, y))
+    w, h = 300, 250
+    screen.geometry('%dx%d+%d+%d' % (
+    w, h, ((screen.winfo_screenwidth() / 2) - (w / 2)), ((screen.winfo_screenheight() / 2) - (h / 2))))
     screen.title("Main Screen")
     Label(text="Main Screen", bg="grey", width="300", height="2", font=("Calibri", 13)).pack()
     Label(text="").pack()
