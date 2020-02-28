@@ -113,7 +113,7 @@ def admin_update(name, id_num):
     user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
     admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
     dl.edit_usr(user_usr, admin_usr)
-    screen11.destroy()
+    screen7.destroy()
 
 
 def student_update(name, id_num, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009,
@@ -342,9 +342,9 @@ def admin_edit(req_user, req_role):
     global ID_entry2
 
     Label(screen7, text="Enter Name").grid(row=2, column=2)
-    name_entry2 = Entry(screen11, textvariable=name_verify1).grid(row=3, column=2)
+    name_entry2 = Entry(screen7, textvariable=name_verify1).grid(row=3, column=2)
     Label(screen7, text="Enter Admin ID").grid(row=2, column=4)
-    ID_entry2 = Entry(screen11, textvariable=ID_verify1, state='disabled').grid(row=3, column=4)
+    ID_entry2 = Entry(screen7, textvariable=ID_verify1, state='disabled').grid(row=3, column=4)
     Label(screen7, text="").grid(row=4)
     Button(screen7, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=admin_register_card_read).grid(row=5, column=3)
