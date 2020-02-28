@@ -105,7 +105,7 @@ def admin_add(name, id_num):
             admin_usr = User.Admin(Type=1, id=id_num, user=user_usr)
             dl.add_usr(user_usr)
             dl.add_usr(admin_usr)
-            Label(screen10, text="Admin registered successfully.", fg="green").grid(row=6, column=3)
+            Label(screen11, text="Admin registered successfully.", fg="green").grid(row=6, column=3)
         id = ""
     else:
         Label(screen11, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
@@ -125,7 +125,7 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
                                    Mach010=mach010, id=id_num, user=user_usr)
             dl.add_usr(user_usr)
             dl.add_usr(student_usr)
-            Label(screen10, text="Student registered successfully.", fg="green").grid(row=6, column=3)
+            Label(screen1, text="Student registered successfully.", fg="green").grid(row=6, column=3)
         id = ""
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
@@ -286,6 +286,7 @@ def admin_enter_id():
     Label(screen4, text="").grid(row=1)
     Label(screen4, text="Enter ID").grid(row=2, column=2)
     admin_id = Entry(screen4, textvariable=ID_verify2).grid(row=2, column=3)
+    Button(screen4, text="Enter"), width=5, height=1, command=
     Label(screen4, text="").grid(row=3)
     Label(screen4, text="").grid(row=4)
     Button(screen4, text="Return", width=5, height=1, command=delete7).grid(row=5)
