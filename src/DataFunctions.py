@@ -83,7 +83,6 @@ def check_user_permission(scanned_tag):
 
 # checks the user type
 def check_user_level(scanned_tag):
-    session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         if req_user.Type == 1:
@@ -96,13 +95,11 @@ def check_user_level(scanned_tag):
 
 # gets user
 def get_user(scanned_tag):
-    session = Session()
     return session.query(User.User).filter_by(rfid_tag=scanned_tag)
 
 
 # adds user to db using an existing object
 def addUser(user_info):
-    session = Session()
     session.add(user_info)
     session.commit()
     return True
