@@ -46,6 +46,15 @@ def delete8():
     screen5.destroy()
     edit_admin_student()
 
+
+def delete9():
+    screen6.destroy()
+    edit_admin_student()
+
+def delete10():
+    screen7.destroy()
+    edit_admin_student()
+
 # Used for scanning IDS in the "Register User" window
 def register_user_card_read():
     global id
@@ -130,6 +139,93 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
+
+def student_edit():
+    global screen6
+    screen1 = Toplevel(screen)
+    screen1.title("Edit")
+    screen1.geometry("1000x600")
+    Label(screen1, text="User Permissions").grid(row=0, column=3)
+    Label(screen1, text="").grid(row=1)
+    global name_verify
+    global ID_verify
+
+    name_verify = StringVar()
+    ID_verify = IntVar()
+    mach001 = IntVar()
+    mach002 = IntVar()
+    mach003 = IntVar()
+    mach004 = IntVar()
+    mach005 = IntVar()
+    mach006 = IntVar()
+    mach007 = IntVar()
+    mach008 = IntVar()
+    mach009 = IntVar()
+    mach010 = IntVar()
+
+    global name_entry1
+    global ID_entry1
+
+    Label(screen6, text="Enter Name").grid(row=2, column=2)
+    name_entry1 = Entry(screen6, textvariable=name_verify).grid(row=3, column=2)
+    Label(screen6, text="Enter Student ID").grid(row=2, column=4)
+    ID_entry1 = Entry(screen6, textvariable=ID_verify).grid(row=3, column=4)
+    Label(screen6, text="").grid(row=4)
+    Button(screen6, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
+           command=student_permission_card_read).grid(row=5, column=3)
+    Label(screen6, text="").grid(row=6)
+    Label(screen6, text="").grid(row=7)
+    Checkbutton(screen6, text="Machine Name 01", variable=mach001).grid(row=8, column=2)
+    Checkbutton(screen6, text="Machine Name 02", variable=mach002).grid(row=8, column=4)
+    Label(screen6, text="").grid(row=9)
+    Checkbutton(screen6, text="Machine Name 03", variable=mach003).grid(row=10, column=2)
+    Checkbutton(screen6, text="Machine Name 04", variable=mach004).grid(row=10, column=4)
+    Label(screen6, text="").grid(row=11)
+    Checkbutton(screen6, text="Machine Name 05", variable=mach005).grid(row=12, column=2)
+    Checkbutton(screen6, text="Machine Name 06", variable=mach006).grid(row=12, column=4)
+    Label(screen6, text="").grid(row=13)
+    Checkbutton(screen6, text="Machine Name 07", variable=mach007).grid(row=14, column=2)
+    Checkbutton(screen6, text="Machine Name 08", variable=mach008).grid(row=14, column=4)
+    Label(screen6, text="").grid(row=15)
+    Checkbutton(screen6, text="Machine Name 09", variable=mach009).grid(row=16, column=2)
+    Checkbutton(screen6, text="Machine Name 10", variable=mach010).grid(row=16, column=4)
+    Label(screen6, text="").grid(row=17)
+    Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=18, column=1)
+    Button(screen6, text="Enter", width=10, height=2,
+           command=lambda: student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
+                                       mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
+                                       mach009.get(),
+                                       mach010.get())).grid(row=18, column=5)
+
+
+def admin_edit():
+    global screen7
+    screen11 = Toplevel(screen)
+    screen11.title("Edit")
+    screen11.geometry("900x400")
+    Label(screen11, text="Admin Info").grid(row=0, column=3)
+    Label(screen11, text="").grid(row=1)
+    global name_verify1
+    global ID_verify1
+
+    name_verify1 = StringVar()
+    ID_verify1 = IntVar()
+
+    global name_entry2
+    global ID_entry2
+
+    Label(screen7, text="Enter Name").grid(row=2, column=2)
+    name_entry2 = Entry(screen7, textvariable=name_verify1).grid(row=3, column=2)
+    Label(screen7, text="Enter Admin ID").grid(row=2, column=4)
+    ID_entry2 = Entry(screen7, textvariable=ID_verify1).grid(row=3, column=4)
+    Label(screen7, text="").grid(row=4)
+    Button(screen7, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
+           command=admin_register_card_read).grid(row=5, column=3)
+    Label(screen7, text="").grid(row=6)
+    Label(screen7, text="").grid(row=7)
+    Button(screen7, text="Return", width=10, height=1, command=delete10).grid(row=8)
+    Button(screen7, text="Enter", width=10, height=2,
+           command=lambda: admin_add(name_verify1.get(), ID_verify1.get())).grid(row=8, column=3)
 # screen for user to register their information in order to login. This is where the student
 # permissions will be allocated
 def student_register():
