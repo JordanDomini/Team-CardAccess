@@ -471,7 +471,7 @@ def admin_enter_id():
     global admin_id
     screen4 = Toplevel(screen)
     screen4.title("Enter ID")
-    w, h = 300, 250
+    w, h = 400, 250
     screen4.geometry('%dx%d+%d+%d' % (
     w, h, ((screen4.winfo_screenwidth() / 2) - (w / 2)), ((screen4.winfo_screenheight() / 2) - (h / 2))))
     Label(screen4, text="").grid(row=0)
