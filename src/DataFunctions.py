@@ -16,11 +16,11 @@ SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/test_db'.format(USR, PWD, IP
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
 fo.close()
+session = Session()
 
 
 # checks permissions of student or just if admin
 def check_user_permission(scanned_tag):
-    session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         req_student = session.query(User.Student).filter_by(id=req_user.id).first()
