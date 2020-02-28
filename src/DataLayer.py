@@ -17,5 +17,9 @@ def add_usr(scanned_rfid):
     return df.addUser(scanned_rfid)
 
 
-# def edit_rfid(user_info):
-#     df.edit_user(user_info)
+def edit_usr(user_info, user_role):
+    return df.edit_user(user_info, user_role)
+
+
+def get_usr_by_id(id_no):
+    return df.get_user_by_id(id_no)

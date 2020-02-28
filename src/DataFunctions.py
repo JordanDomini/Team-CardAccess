@@ -95,7 +95,7 @@ def check_user_level(scanned_tag):
 
 # gets user
 def get_user(scanned_tag):
-    return session.query(User.User).filter_by(rfid_tag=scanned_tag)
+    return session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
 
 
 # adds user to db using an existing object
@@ -106,9 +106,37 @@ def addUser(user_info):
 
 
 # edit the rfid tag of an existing user
-# def edit_user(user_info):
-#     session = Session()  # starts the connected session
-#     type = check_user_level()  # checks the user's type
-#     if type == 0:  # for type student
-#         # mapper query to filter by id number and get first result
-#         req_user = session.query(User.Uer).filter_by(id=user_info.id).first()
+def edit_user(user_user, user_role):
+    req_user = session.query(User.User).filter_by(id=user_user.id).first()
+    if req_user.Type == 0:  # for type student
+        # mapper query to filter by id number and get first result
+        req_role = session.query(User.Student).filter_by(id=user_user.id).first()
+        req_role.Mach001 = user_role.Mach001
+        req_role.Mach002 = user_role.Mach002
+        req_role.Mach003 = user_role.Mach003
+        req_role.Mach004 = user_role.Mach004
+        req_role.Mach005 = user_role.Mach005
+        req_role.Mach006 = user_role.Mach006
+        req_role.Mach007 = user_role.Mach007
+        req_role.Mach008 = user_role.Mach008
+        req_role.Mach009 = user_role.Mach009
+        req_role.Mach0010 = user_role.Mach0010
+    elif req_user.Type == 1:
+        req_role = session.query(User.Admin).filter_by(id=user_user.id).first()
+    req_user.name = user_user.name
+    if user_user.rfid_tag != "":
+        req_user.rfid_tag = user_user.rfid_tag
+    req_user.active = user_user.active
+    session.flush()
+    session.commit()
+
+
+def get_user_by_id(id_no):
+    req_user = session.query(User.User).filter_by(id=id_no).first()
+    if req_user.Type == 0:
+        req_role = session.query(User.Student).filter_by(id=id_no).first()
+    elif req_user.Type == 1:
+        req_role = session.query(User.Admin).filter_by(id=id_no).first()
+    else:
+        req_role = None
+    return  req_user, req_role
