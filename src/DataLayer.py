@@ -23,3 +23,12 @@ def edit_usr(user_info, user_role):
 
 def get_usr_by_id(id_no):
     return df.get_user_by_id(id_no)
+
+
+def get_mach(mach_id):
+    mach_id = mach_id.trim()
+    return df.get_machine(mach_id)
+
+
+def add_mach(mach):
+    return df.add_machine(mach)

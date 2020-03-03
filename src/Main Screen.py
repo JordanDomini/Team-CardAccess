@@ -109,6 +109,12 @@ def student_permission_card_read():
             break
 
 
+def machin_add(name, mach_num):
+    lab_mach = User.LabMachine(Name=name, Mach_num=mach_num)
+
+
+
+
 def admin_update(name, id_num):
     global id
     user_usr = User.User(id=id_num, name=name, rfid_tag=id, Type=1, active=True)
