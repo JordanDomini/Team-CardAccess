@@ -139,4 +139,29 @@ def get_user_by_id(id_no):
         req_role = session.query(User.Admin).filter_by(id=id_no).first()
     else:
         req_role = None
-    return  req_user, req_role
+    return req_user, req_role
+
+
+def get_machine(mach_id):
+    req_mach = session.query(User.LabMachine).filter_by(Mach_id=mach_id).first()
+    return req_mach
+
+
+def add_machine(mach):
+    session.add(mach)
+    session.commit()
+
+
+def using_machine(mach_id, id_no):
+    req_mach = session.query(User.LabMachine).filter_by(Mach_id=mach_id).first()
+    req_mach.Current_user = id_no
+    session.flush()
+    session.commit()
+
+
+def machine_in_use(id_no):
+    req_machine = session.query(User.LabMachine).filter_by(Current_user=id_no).first()
+    if req_machine:
+        return True
+    else:
+        return False
