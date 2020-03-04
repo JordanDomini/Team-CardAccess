@@ -25,6 +25,36 @@ GPIO.output(green_led, GPIO.LOW)
 future = time.monotonic() + 1
 
 
+def blinkRed():
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+
+
+def blinkGreen():
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(green_led, GPIO.HIGH)
+
+
 def Main():
     global future, i, id, prev_id
     try:
@@ -53,60 +83,16 @@ def Main():
                     GPIO.output(red_led, GPIO.HIGH)
                     GPIO.output(green_led, GPIO.LOW)
                     i = 0
-                elif i == 0:
-                    GPIO.output(red_led, GPIO.LOW)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.HIGH)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.LOW)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.HIGH)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.LOW)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.HIGH)
                 elif i == 1:
-                    GPIO.output(red_led, GPIO.HIGH)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.LOW)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.HIGH)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.LOW)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.HIGH)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, GPIO.LOW)
-                    time.sleep(0.2)
-                    GPIO.output(green_led, GPIO.HIGH)
+                    blinkGreen()
+                elif i == 0:
+                    blinkRed()
                 future = time.monotonic() + 1
             elif i == 0:
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(green_led, GPIO.HIGH)
+                blinkGreen()
                 future = time.monotonic() + 1
             elif i == 1:
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
+                blinkRed()
                 future = time.monotonic() + 1
 
     except:
