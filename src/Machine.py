@@ -80,19 +80,6 @@ def Main():
                     time.sleep(0.2)
                     GPIO.output(green_led, GPIO.HIGH)
                 future = time.monotonic() + 1
-            elif i == 0:
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.LOW)
-                time.sleep(0.2)
-                GPIO.output(red_led, GPIO.HIGH)
-                future = time.monotonic() + 1
             elif i == 1:
                 GPIO.output(red_led, GPIO.HIGH)
                 time.sleep(0.2)
@@ -108,6 +95,20 @@ def Main():
                 time.sleep(0.2)
                 GPIO.output(green_led, GPIO.HIGH)
                 future = time.monotonic() + 1
+            elif i == 0:
+                GPIO.output(red_led, GPIO.LOW)
+                time.sleep(0.2)
+                GPIO.output(red_led, GPIO.HIGH)
+                time.sleep(0.2)
+                GPIO.output(red_led, GPIO.LOW)
+                time.sleep(0.2)
+                GPIO.output(red_led, GPIO.HIGH)
+                time.sleep(0.2)
+                GPIO.output(red_led, GPIO.LOW)
+                time.sleep(0.2)
+                GPIO.output(red_led, GPIO.HIGH)
+                future = time.monotonic() + 1
+
     except:
         GPIO.cleanup()
 
