@@ -77,6 +77,7 @@ def Main():
                     GPIO.output(red_led, 1)
                     time.sleep(0.2)
                     GPIO.output(red_led, 0)
+                    time.sleep(0.2)
                     GPIO.output(green_led, 1)
                 future = time.monotonic() + 1
             elif i == 0:
@@ -104,6 +105,7 @@ def Main():
                 GPIO.output(red_led, 1)
                 time.sleep(0.2)
                 GPIO.output(red_led, 0)
+                time.sleep(0.2)
                 GPIO.output(green_led, 1)
                 future = time.monotonic() + 1
     except:
