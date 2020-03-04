@@ -19,9 +19,9 @@ reader = SimpleMFRC522()
 i = 0
 id = ""
 prev_id=""
-GPIO.output(relay, 0)
-GPIO.output(red_led, 1)
-GPIO.output(green_led, 0)
+GPIO.output(relay, GPIO.LOW)
+GPIO.output(red_led, GPIO.HIGH)
+GPIO.output(green_led, GPIO.LOW)
 future = time.monotonic() + 1
 
 
@@ -34,79 +34,79 @@ def Main():
                 if reader.read():
                     if time.monotonic() > future:
                         id, string = reader.read()
-                        GPIO.output(red_led, 0)
-                        GPIO.output(green_led, 0)
+                        GPIO.output(red_led, GPIO.LOW)
+                        GPIO.output(green_led, GPIO.LOW)
                         break
                     else:
                         future = time.monotonic() + 1
             if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is True:  # if id is correct
                 if i == 0:  # check if the system is off
                     print("\nTurning on.")
-                    GPIO.output(relay, 1)
-                    GPIO.output(green_led, 1)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(relay, GPIO.HIGH)
+                    GPIO.output(green_led, GPIO.HIGH)
+                    GPIO.output(red_led, GPIO.LOW)
                     prev_id = id
                     i = 1
                 elif i == 1 and (id == prev_id or dl.check_lvl(str(id).strip())):  # check if the system is on
                     print("\nTurning off.")
-                    GPIO.output(relay, 0)
-                    GPIO.output(red_led, 1)
-                    GPIO.output(green_led, 0)
+                    GPIO.output(relay, GPIO.LOW)
+                    GPIO.output(red_led, GPIO.HIGH)
+                    GPIO.output(green_led, GPIO.LOW)
                     i = 0
                 elif i == 0:
-                    GPIO.output(red_led, 0)
+                    GPIO.output(red_led, GPIO.LOW)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, GPIO.HIGH)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(red_led, GPIO.LOW)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, GPIO.HIGH)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(red_led, GPIO.LOW)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, GPIO.HIGH)
                 elif i == 1:
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, GPIO.HIGH)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(red_led, GPIO.LOW)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, GPIO.HIGH)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(red_led, GPIO.LOW)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 1)
+                    GPIO.output(red_led, GPIO.HIGH)
                     time.sleep(0.2)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(red_led, GPIO.LOW)
                     time.sleep(0.2)
-                    GPIO.output(green_led, 1)
+                    GPIO.output(green_led, GPIO.HIGH)
                 future = time.monotonic() + 1
             elif i == 0:
-                GPIO.output(red_led, 0)
+                GPIO.output(red_led, GPIO.LOW)
                 time.sleep(0.2)
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, GPIO.HIGH)
                 time.sleep(0.2)
-                GPIO.output(red_led, 0)
+                GPIO.output(red_led, GPIO.LOW)
                 time.sleep(0.2)
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, GPIO.HIGH)
                 time.sleep(0.2)
-                GPIO.output(red_led, 0)
+                GPIO.output(red_led, GPIO.LOW)
                 time.sleep(0.2)
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, GPIO.HIGH)
                 future = time.monotonic() + 1
             elif i == 1:
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, GPIO.HIGH)
                 time.sleep(0.2)
-                GPIO.output(red_led, 0)
+                GPIO.output(red_led, GPIO.LOW)
                 time.sleep(0.2)
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, GPIO.HIGH)
                 time.sleep(0.2)
-                GPIO.output(red_led, 0)
+                GPIO.output(red_led, GPIO.LOW)
                 time.sleep(0.2)
-                GPIO.output(red_led, 1)
+                GPIO.output(red_led, GPIO.HIGH)
                 time.sleep(0.2)
-                GPIO.output(red_led, 0)
+                GPIO.output(red_led, GPIO.LOW)
                 time.sleep(0.2)
-                GPIO.output(green_led, 1)
+                GPIO.output(green_led, GPIO.HIGH)
                 future = time.monotonic() + 1
     except:
         GPIO.cleanup()
