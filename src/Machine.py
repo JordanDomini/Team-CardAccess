@@ -39,8 +39,6 @@ def Main():
                         break
                     else:
                         future = time.monotonic() + 1
-            if reader.read():
-                id, string = reader.read()
             if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is True:  # if id is correct
                 if i == 0:  # check if the system is off
                     print("\nTurning on.")
@@ -55,7 +53,19 @@ def Main():
                     GPIO.output(red_led, 1)
                     GPIO.output(green_led, 0)
                     i = 0
-                else:
+                elif i == 0:
+                    GPIO.output(red_led, 0)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 1)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 0)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 1)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 0)
+                    time.sleep(0.2)
+                    GPIO.output(red_led, 1)
+                elif i == 1:
                     GPIO.output(red_led, 1)
                     time.sleep(0.2)
                     GPIO.output(red_led, 0)
@@ -67,8 +77,9 @@ def Main():
                     GPIO.output(red_led, 1)
                     time.sleep(0.2)
                     GPIO.output(red_led, 0)
+                    GPIO.output(green_led, 1)
                 future = time.monotonic() + 1
-            else:
+            elif i == 0:
                 GPIO.output(red_led, 0)
                 time.sleep(0.2)
                 GPIO.output(red_led, 1)
@@ -80,6 +91,20 @@ def Main():
                 GPIO.output(red_led, 0)
                 time.sleep(0.2)
                 GPIO.output(red_led, 1)
+                future = time.monotonic() + 1
+            elif i == 1:
+                GPIO.output(red_led, 1)
+                time.sleep(0.2)
+                GPIO.output(red_led, 0)
+                time.sleep(0.2)
+                GPIO.output(red_led, 1)
+                time.sleep(0.2)
+                GPIO.output(red_led, 0)
+                time.sleep(0.2)
+                GPIO.output(red_led, 1)
+                time.sleep(0.2)
+                GPIO.output(red_led, 0)
+                GPIO.output(green_led, 1)
                 future = time.monotonic() + 1
     except:
         GPIO.cleanup()
