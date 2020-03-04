@@ -40,13 +40,13 @@ def blinkRed():
 
 
 def blinkGreen():
-    GPIO.output(red_led, GPIO.HIGH)
-    time.sleep(0.2)
-    GPIO.output(red_led, GPIO.LOW)
-    time.sleep(0.2)
-    GPIO.output(red_led, GPIO.HIGH)
-    time.sleep(0.2)
-    GPIO.output(red_led, GPIO.LOW)
+    # GPIO.output(red_led, GPIO.HIGH)
+    # time.sleep(0.2)
+    # GPIO.output(red_led, GPIO.LOW)
+    # time.sleep(0.2)
+    # GPIO.output(red_led, GPIO.HIGH)
+    # time.sleep(0.2)
+    # GPIO.output(red_led, GPIO.LOW)
     time.sleep(0.2)
     GPIO.output(red_led, GPIO.HIGH)
     time.sleep(0.2)
