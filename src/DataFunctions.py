@@ -21,6 +21,7 @@ session = Session()
 
 # checks permissions of student or if admin
 def check_user_permission(scanned_tag):
+    session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         req_student = session.query(User.Student).filter_by(id=req_user.id).first()
@@ -80,6 +81,7 @@ def check_user_permission(scanned_tag):
 
 # checks the user type
 def check_user_level(scanned_tag):
+    session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         if req_user.Type == 1:
@@ -140,6 +142,7 @@ def get_user_by_id(id_no):
 
 
 def get_machine(mach_id):
+    session = Session()
     req_mach = session.query(User.LabMachine).filter_by(Mach_id=mach_id).first()
     return req_mach
 
