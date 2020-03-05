@@ -122,7 +122,7 @@ def get_user(scanned_tag):
 
 
 # adds user to db using an existing object
-def addUser(user_info):
+def add_user(user_info):
     session.add(user_info)
     session.commit()
     return True
