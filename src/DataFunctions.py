@@ -28,54 +28,75 @@ def check_user_permission(scanned_tag):
         if req_student:
             if mach_num == "Mach001":
                 if req_student.Mach001:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach002":
                 if req_student.Mach002:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach003":
                 if req_student.Mach003:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach004":
                 if req_student.Mach004:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach005":
                 if req_student.Mach005:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach006":
                 if req_student.Mach006:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach007":
                 if req_student.Mach007:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach008":
                 if req_student.Mach008:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach009":
                 if req_student.Mach009:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach010":
                 if req_student.Mach010:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
+    session.close()
     return False
 
 
@@ -85,10 +106,13 @@ def check_user_level(scanned_tag):
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         if req_user.Type == 1:
+            session.close()
             return True
         else:
+            session.close()
             return False
     else:
+        session.close()
         return False
 
 
