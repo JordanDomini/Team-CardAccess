@@ -77,12 +77,14 @@ def Main():
                     GPIO.output(green_led, GPIO.HIGH)
                     GPIO.output(red_led, GPIO.LOW)
                     prev_id = id
+                    id = ""
                     i = 1
                 elif i == 1 and (id == prev_id or dl.check_lvl(str(id).strip())):  # check if the system is on
                     print("\nTurning off.")
                     GPIO.output(relay, GPIO.LOW)
                     GPIO.output(red_led, GPIO.HIGH)
                     GPIO.output(green_led, GPIO.LOW)
+                    id = ""
                     i = 0
                 elif i == 1:
                     blinkGreen()
