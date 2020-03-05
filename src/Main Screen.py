@@ -39,17 +39,17 @@ def delete6():
 
 def delete7():
     screen4.destroy()
-    edit_admin_student()
+    main_screen()
 
 
 def delete8():
     screen5.destroy()
-    edit_admin_student()
+    main_screen()
 
 
 def delete9():
     screen6.destroy()
-    edit_admin_student()
+    main_screen()
 
 
 def delete10():
@@ -109,7 +109,7 @@ def student_permission_card_read():
             break
 
 
-def machin_add(name, mach_num):
+def machine_add(name, mach_num):
     lab_mach = User.LabMachine(Name=name, Mach_num=mach_num)
 
 
@@ -189,9 +189,10 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
 # permissions will be allocated
 def student_edit(req_user, req_role):
     global screen6
+    machs = dl.get_all_mach()
     screen6 = Toplevel(screen)
     screen6.title("Edit")
-    w, h = 950, 500
+    w, h = 950, 400 + len(machs) * 20
     screen6.geometry('%dx%d+%d+%d' % (
     w, h, ((screen6.winfo_screenwidth() / 2) - (w / 2)), ((screen6.winfo_screenheight() / 2) - (h / 2))))
     Label(screen6, text="User Permissions").grid(row=0, column=3)
@@ -226,7 +227,6 @@ def student_edit(req_user, req_role):
 
     global name_entry1
     global ID_entry1
-
     Label(screen6, text="Enter Name").grid(row=2, column=2)
     name_entry1 = Entry(screen6, textvariable=name_verify).grid(row=3, column=2)
     Label(screen6, text="Enter Student ID").grid(row=2, column=4)
@@ -235,27 +235,37 @@ def student_edit(req_user, req_role):
     Button(screen6, text="Click Here to Scan RFID Tag", fg="black", width=30, height=2,
            command=student_permission_card_read).grid(row=5, column=3)
     Label(screen6, text="").grid(row=6)
-    Label(screen6, text="").grid(row=7)
-    but1 = Checkbutton(screen6, text="Machine Name 01", variable=mach001).grid(row=8, column=2)
-    but2 = Checkbutton(screen6, text="Machine Name 02", variable=mach002).grid(row=8, column=4)
-    Label(screen6, text="").grid(row=9)
-    but3 = Checkbutton(screen6, text="Machine Name 03", variable=mach003).grid(row=10, column=2)
-    but4 = Checkbutton(screen6, text="Machine Name 04", variable=mach004).grid(row=10, column=4)
-    Label(screen6, text="").grid(row=11)
-    but5 = Checkbutton(screen6, text="Machine Name 05", variable=mach005).grid(row=12, column=2)
-    but6 = Checkbutton(screen6, text="Machine Name 06", variable=mach006).grid(row=12, column=4)
-    Label(screen6, text="").grid(row=13)
-    but7 = Checkbutton(screen6, text="Machine Name 07", variable=mach007).grid(row=14, column=2)
-    but8 = Checkbutton(screen6, text="Machine Name 08", variable=mach008).grid(row=14, column=4)
-    Label(screen6, text="").grid(row=15)
-    but9 = Checkbutton(screen6, text="Machine Name 09", variable=mach009).grid(row=16, column=2)
-    but10 = Checkbutton(screen6, text="Machine Name 10", variable=mach010).grid(row=16, column=4)
+    if len(machs) > 0:
+        Label(screen6, text="").grid(row=7)
+        but1 = Checkbutton(screen6, text=machs[0].Name, variable=mach001).grid(row=8, column=2)
+    if len(machs) > 1:
+        but2 = Checkbutton(screen6, text=machs[1].Name, variable=mach002).grid(row=8, column=4)
+    if len(machs) > 2:
+        Label(screen6, text="").grid(row=9)
+        but3 = Checkbutton(screen6, text=machs[2].Name, variable=mach003).grid(row=10, column=2)
+    if len(machs) > 3:
+        but4 = Checkbutton(screen6, text=machs[3].Name, variable=mach004).grid(row=10, column=4)
+    if len(machs) > 4:
+        Label(screen6, text="").grid(row=11)
+        but5 = Checkbutton(screen6, text=machs[4].Name, variable=mach005).grid(row=12, column=2)
+    if len(machs) > 5:
+        but6 = Checkbutton(screen6, text=machs[5].Name, variable=mach006).grid(row=12, column=4)
+    if len(machs) > 6:
+        Label(screen6, text="").grid(row=13)
+        but7 = Checkbutton(screen6, text=machs[6].Name, variable=mach007).grid(row=14, column=2)
+    if len(machs) > 7:
+        but8 = Checkbutton(screen6, text=machs[7].Name, variable=mach008).grid(row=14, column=4)
+    if len(machs) > 8:
+        Label(screen6, text="").grid(row=15)
+        but9 = Checkbutton(screen6, text=machs[8].Name, variable=mach009).grid(row=16, column=2)
+    if len(machs) > 9:
+        but10 = Checkbutton(screen6, text=machs[9].Name, variable=mach010).grid(row=16, column=4)
     Label(screen6, text="").grid(row=17)
-    Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=18, column=1)
+    Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=9+len(machs)/2, column=1)
     Button(screen6, text="Enter", width=10, height=2,
            command=lambda: student_update(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
                                        mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
-                                       mach009.get(), mach010.get())).grid(row=18, column=5)
+                                       mach009.get(), mach010.get())).grid(row=9+len(machs)/2, column=5)
     name_entry1.insert(0, req_user.name)
     ID_entry1.insert(0, req_user.id)
     if req_role.Mach001:

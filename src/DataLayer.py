@@ -32,3 +32,15 @@ def get_mach(mach_id):
 
 def add_mach(mach):
     return df.add_machine(mach)
+
+
+def get_all_mach():
+    return df.get_all_machines()
+
+
+def use_mach(mach_id, id_no=None):
+    return df.using_machine(mach_id, id_no)
+
+
+def mach_used(id_no):
+    return df.machine_in_use(id_no)

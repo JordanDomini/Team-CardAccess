@@ -4,7 +4,9 @@ import time
 import DataLayer as dl
 from mfrc522 import SimpleMFRC522
 
-
+fo = open("/home/pi/Mach_Number.txt")
+mach_num = fo.read().strip()
+mach_id = int(mach_num.replace("Mach", ""))
 red_led = 10
 green_led = 12
 relay = 40
@@ -71,12 +73,13 @@ def Main():
                     else:
                         future = time.monotonic() + 1
             if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is True:  # if id is correct
-                if i == 0:  # check if the system is off
+                if i == 0 and (dl.mach_used(int(id.strip())) or dl.check_lvl(str(id).strip())):  # check if the system is off
                     print("\nTurning on.")
                     GPIO.output(relay, GPIO.HIGH)
                     GPIO.output(green_led, GPIO.HIGH)
                     GPIO.output(red_led, GPIO.LOW)
                     prev_id = id
+                    dl.use_mach(mach_id, str(id).strip())
                     id = ""
                     i = 1
                 elif i == 1 and (id == prev_id or dl.check_lvl(str(id).strip())):  # check if the system is on
@@ -84,6 +87,7 @@ def Main():
                     GPIO.output(relay, GPIO.LOW)
                     GPIO.output(red_led, GPIO.HIGH)
                     GPIO.output(green_led, GPIO.LOW)
+                    dl.use_mach(mach_id, None)
                     id = ""
                     i = 0
                 elif i == 1:
