@@ -207,6 +207,6 @@ def machine_in_use(id_no):
 
 def get_all_machines():
     session = Session()
-    users = session.query(User.User).all()
+    users = session.query(User.LabMachine).all()
     session.close()
     return users
