@@ -192,7 +192,7 @@ def student_edit(req_user, req_role):
     machs = dl.get_all_mach()
     screen6 = Toplevel(screen)
     screen6.title("Edit")
-    w, h = 950, 400 + len(machs) * 20
+    w, h = 950, (250 + len(machs) * 20)
     screen6.geometry('%dx%d+%d+%d' % (
     w, h, ((screen6.winfo_screenwidth() / 2) - (w / 2)), ((screen6.winfo_screenheight() / 2) - (h / 2))))
     Label(screen6, text="User Permissions").grid(row=0, column=3)
@@ -261,11 +261,11 @@ def student_edit(req_user, req_role):
     if len(machs) > 9:
         but10 = Checkbutton(screen6, text=machs[9].Name, variable=mach010).grid(row=16, column=4)
     Label(screen6, text="").grid(row=17)
-    Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=9+len(machs)/2, column=1)
+    Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=10+int(len(machs)/2), column=1)
     Button(screen6, text="Enter", width=10, height=2,
            command=lambda: student_update(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
                                        mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
-                                       mach009.get(), mach010.get())).grid(row=9+len(machs)/2, column=5)
+                                       mach009.get(), mach010.get())).grid(row=10+int(len(machs)/2), column=5)
     name_entry1.insert(0, req_user.name)
     ID_entry1.insert(0, req_user.id)
     if req_role.Mach001:
