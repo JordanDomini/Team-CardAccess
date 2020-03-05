@@ -253,7 +253,7 @@ def student_edit(req_user, req_role):
     Label(screen6, text="").grid(row=17)
     Button(screen6, text="Return", width=10, height=1, command=delete9).grid(row=18, column=1)
     Button(screen6, text="Enter", width=10, height=2,
-           command=lambda: student_add(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
+           command=lambda: student_update(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
                                        mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
                                        mach009.get(), mach010.get())).grid(row=18, column=5)
     name_entry1.insert(0, req_user.name)
