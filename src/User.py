@@ -61,7 +61,7 @@ class LabMachine(Base):
     __tablename__ = 'machines'
 
     Name = Column(String(50), nullable=False)
-    Mach_num = Column(String(50), nullable=False, primary_key=True, index=True)
+    Mach_num = Column(Integer, nullable=False, primary_key=True, index=True)
     Current_user = Column(Integer, nullable=True)
 
     def __repr__(self):
