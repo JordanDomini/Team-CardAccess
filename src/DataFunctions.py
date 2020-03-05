@@ -120,7 +120,7 @@ def edit_user(user_user, user_role):
         req_role.Mach007 = user_role.Mach007
         req_role.Mach008 = user_role.Mach008
         req_role.Mach009 = user_role.Mach009
-        req_role.Mach0010 = user_role.Mach010
+        req_role.Mach010 = user_role.Mach010
     elif req_user.Type == 1:
         req_role = session.query(User.Admin).filter_by(id=user_user.id).first()
     req_user.name = user_user.name

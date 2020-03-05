@@ -474,7 +474,8 @@ def admin_enter_id():
 
     ID_verify2 = IntVar()
 
-    global admin_id
+    global admin_id, id
+    id = ""
     screen4 = Toplevel(screen)
     screen4.title("Enter ID")
     w, h = 400, 250
@@ -496,7 +497,8 @@ def student_enter_id():
 
     ID_verify3 = 0
 
-    global student_id
+    global student_id, id
+    id = ""
     screen5 = Toplevel(screen)
     screen5.title("Enter ID")
     w, h = 300, 250
