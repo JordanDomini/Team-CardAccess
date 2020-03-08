@@ -56,6 +56,10 @@ def delete10():
     screen11.destroy()
     screen7.destroy()
 
+
+def delete11():
+    screen12.destroy()
+
 # Used for scanning IDS in the "Register User" window
 def register_user_card_read():
     global id
@@ -184,6 +188,83 @@ def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach0
     else:
         Label(screen1, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
 
+# Use this window to decide whether or not to delete the user
+def student_delete():
+    global screen12
+    screen12 = Toplevel(screen)
+    screen12.title("Student Delete")
+    w, h = 950, (250 + len(machs) * 20)
+    screen12.geometry('%dx%d+%d+%d' % (
+        w, h, ((screen12.winfo_screenwidth() / 2) - (w / 2)), ((screen12.winfo_screenheight() / 2) - (h / 2))))
+    Label(screen12, text="Delete this User?").grid(row=0, column=3)
+    Label(screen12, text="").grid(row=1)
+
+    global name_entry4
+    global ID_entry4
+    global name_verify
+    global ID_verify
+
+    name_verify = StringVar()
+    ID_verify = IntVar()
+    mach001 = IntVar()
+    mach002 = IntVar()
+    mach003 = IntVar()
+    mach004 = IntVar()
+    mach005 = IntVar()
+    mach006 = IntVar()
+    mach007 = IntVar()
+    mach008 = IntVar()
+    mach009 = IntVar()
+    mach010 = IntVar()
+    name_verify.set(req_user.name)
+    ID_verify.set(req_user.id)
+    mach001.set(req_role.Mach001)
+    mach002.set(req_role.Mach002)
+    mach003.set(req_role.Mach003)
+    mach004.set(req_role.Mach004)
+    mach005.set(req_role.Mach005)
+    mach006.set(req_role.Mach006)
+    mach007.set(req_role.Mach007)
+    mach008.set(req_role.Mach008)
+    mach009.set(req_role.Mach009)
+    mach010.set(req_role.Mach010)
+
+    Label(screen12, text="Enter Name").grid(row=2, column=2)
+    name_entry4 = Entry(screen12, textvariable=name_verify).grid(row=3, column=2)
+    Label(screen12, text="Enter Student ID").grid(row=2, column=4)
+    ID_entry4 = Entry(screen12, textvariable=ID_verify, state="disabled").grid(row=3, column=4)
+    Label(screen12, text="").grid(row=4)
+    Button(screen12, text="Click Here to Delete This User", fg="black", width=30, height=2,
+           command=).grid(row=5, column=3)
+    Label(screen12, text="").grid(row=6)
+
+    if len(machs) > 0:
+        Label(screen12, text="").grid(row=7)
+        but1 = Checkbutton(screen6, text=machs[0].Name, variable=mach001).grid(row=8, column=2)
+    if len(machs) > 1:
+        but2 = Checkbutton(screen12, text=machs[1].Name, variable=mach002).grid(row=8, column=4)
+    if len(machs) > 2:
+        Label(screen6, text="").grid(row=9)
+        but3 = Checkbutton(screen12, text=machs[2].Name, variable=mach003).grid(row=10, column=2)
+    if len(machs) > 3:
+        but4 = Checkbutton(screen12, text=machs[3].Name, variable=mach004).grid(row=10, column=4)
+    if len(machs) > 4:
+        Label(screen12, text="").grid(row=11)
+        but5 = Checkbutton(screen12, text=machs[4].Name, variable=mach005).grid(row=12, column=2)
+    if len(machs) > 5:
+        but6 = Checkbutton(screen12, text=machs[5].Name, variable=mach006).grid(row=12, column=4)
+    if len(machs) > 6:
+        Label(screen12, text="").grid(row=13)
+        but7 = Checkbutton(screen12, text=machs[6].Name, variable=mach007).grid(row=14, column=2)
+    if len(machs) > 7:
+        but8 = Checkbutton(screen12, text=machs[7].Name, variable=mach008).grid(row=14, column=4)
+    if len(machs) > 8:
+        Label(screen12, text="").grid(row=15)
+        but9 = Checkbutton(screen12, text=machs[8].Name, variable=mach009).grid(row=16, column=2)
+    if len(machs) > 9:
+        but10 = Checkbutton(screen12, text=machs[9].Name, variable=mach010).grid(row=16, column=4)
+    Label(screen12, text="").grid(row=17)
+    Button(screen12, text="Return", width=10, height=1, command=delete9).grid(row=10+int(len(machs)/2), column=1)
 
 # screen for user to register their information in order to login. This is where the student
 # permissions will be allocated
