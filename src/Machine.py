@@ -4,7 +4,9 @@ import time
 import DataLayer as dl
 from mfrc522 import SimpleMFRC522
 
-
+fo = open("/home/pi/Mach_Number.txt")
+mach_num = fo.read().strip()
+mach_id = int(mach_num.replace("Mach", ""))
 red_led = 10
 green_led = 12
 relay = 40
@@ -19,10 +21,41 @@ reader = SimpleMFRC522()
 i = 0
 id = ""
 prev_id=""
-GPIO.output(relay, 0)
-GPIO.output(red_led, 1)
-GPIO.output(green_led, 0)
+GPIO.output(relay, GPIO.LOW)
+GPIO.output(red_led, GPIO.HIGH)
+GPIO.output(green_led, GPIO.LOW)
 future = time.monotonic() + 1
+
+
+def blinkRed():
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+
+
+def blinkGreen():
+    GPIO.output(red_led, GPIO.HIGH)
+    GPIO.output(green_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(red_led, GPIO.LOW)
+    time.sleep(0.2)
+    GPIO.output(green_led, GPIO.HIGH)
 
 
 def Main():
@@ -34,53 +67,41 @@ def Main():
                 if reader.read():
                     if time.monotonic() > future:
                         id, string = reader.read()
-                        GPIO.output(red_led, 0)
-                        GPIO.output(green_led, 0)
+                        GPIO.output(red_led, GPIO.LOW)
+                        GPIO.output(green_led, GPIO.LOW)
                         break
                     else:
                         future = time.monotonic() + 1
-            if reader.read():
-                id, string = reader.read()
             if dl.check_usr(str(id).strip()) or dl.check_lvl(str(id).strip()) is True:  # if id is correct
-                if i == 0:  # check if the system is off
+                if i == 0 and (dl.mach_used(int(id.strip())) or dl.check_lvl(str(id).strip())):  # check if the system is off
                     print("\nTurning on.")
-                    GPIO.output(relay, 1)
-                    GPIO.output(green_led, 1)
-                    GPIO.output(red_led, 0)
+                    GPIO.output(relay, GPIO.HIGH)
+                    GPIO.output(green_led, GPIO.HIGH)
+                    GPIO.output(red_led, GPIO.LOW)
                     prev_id = id
+                    dl.use_mach(mach_id, str(id).strip())
+                    id = ""
                     i = 1
                 elif i == 1 and (id == prev_id or dl.check_lvl(str(id).strip())):  # check if the system is on
                     print("\nTurning off.")
-                    GPIO.output(relay, 0)
-                    GPIO.output(red_led, 1)
-                    GPIO.output(green_led, 0)
+                    GPIO.output(relay, GPIO.LOW)
+                    GPIO.output(red_led, GPIO.HIGH)
+                    GPIO.output(green_led, GPIO.LOW)
+                    dl.use_mach(mach_id, None)
+                    id = ""
                     i = 0
-                else:
-                    GPIO.output(red_led, 1)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, 0)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, 1)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, 0)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, 1)
-                    time.sleep(0.2)
-                    GPIO.output(red_led, 0)
+                elif i == 1:
+                    blinkGreen()
+                elif i == 0:
+                    blinkRed()
                 future = time.monotonic() + 1
-            else:
-                GPIO.output(red_led, 0)
-                time.sleep(0.2)
-                GPIO.output(red_led, 1)
-                time.sleep(0.2)
-                GPIO.output(red_led, 0)
-                time.sleep(0.2)
-                GPIO.output(red_led, 1)
-                time.sleep(0.2)
-                GPIO.output(red_led, 0)
-                time.sleep(0.2)
-                GPIO.output(red_led, 1)
+            elif i == 1:
+                blinkGreen()
                 future = time.monotonic() + 1
+            elif i == 0:
+                blinkRed()
+                future = time.monotonic() + 1
+
     except:
         GPIO.cleanup()
 

@@ -16,97 +16,125 @@ SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/test_db'.format(USR, PWD, IP
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
 fo.close()
-session = Session()
 
 
-# checks permissions of student or just if admin
+# checks permissions of student or if admin
 def check_user_permission(scanned_tag):
+    session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         req_student = session.query(User.Student).filter_by(id=req_user.id).first()
         if req_student:
             if mach_num == "Mach001":
                 if req_student.Mach001:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach002":
                 if req_student.Mach002:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach003":
                 if req_student.Mach003:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach004":
                 if req_student.Mach004:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach005":
                 if req_student.Mach005:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach006":
                 if req_student.Mach006:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach007":
                 if req_student.Mach007:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach008":
                 if req_student.Mach008:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach009":
                 if req_student.Mach009:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
             elif mach_num == "Mach010":
                 if req_student.Mach010:
+                    session.close()
                     return True
                 else:
+                    session.close()
                     return False
-        req_admin = session.query(User.Admin).filter_by(id=req_user.id).first()
-        if req_admin:
-            return True
+    session.close()
     return False
 
 
 # checks the user type
 def check_user_level(scanned_tag):
+    session = Session()
     req_user = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
     if req_user:
         if req_user.Type == 1:
+            session.close()
             return True
         else:
+            session.close()
             return False
     else:
+        session.close()
         return False
 
 
 # gets user
 def get_user(scanned_tag):
-    return session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
+    session = Session()
+    req_usr = session.query(User.User).filter_by(rfid_tag=scanned_tag).first()
+    session.close()
+    return req_usr
 
 
 # adds user to db using an existing object
-def addUser(user_info):
+def add_user(user_info):
+    session = Session()
     session.add(user_info)
     session.commit()
+    session.close()
     return True
 
 
 # edit the rfid tag of an existing user
 def edit_user(user_user, user_role):
+    session = Session()
     req_user = session.query(User.User).filter_by(id=user_user.id).first()
     if req_user.Type == 0:  # for type student
         # mapper query to filter by id number and get first result
@@ -120,7 +148,7 @@ def edit_user(user_user, user_role):
         req_role.Mach007 = user_role.Mach007
         req_role.Mach008 = user_role.Mach008
         req_role.Mach009 = user_role.Mach009
-        req_role.Mach0010 = user_role.Mach0010
+        req_role.Mach010 = user_role.Mach010
     elif req_user.Type == 1:
         req_role = session.query(User.Admin).filter_by(id=user_user.id).first()
     req_user.name = user_user.name
@@ -129,9 +157,11 @@ def edit_user(user_user, user_role):
     req_user.active = user_user.active
     session.flush()
     session.commit()
+    session.close()
 
 
 def get_user_by_id(id_no):
+    session = Session()
     req_user = session.query(User.User).filter_by(id=id_no).first()
     if req_user.Type == 0:
         req_role = session.query(User.Student).filter_by(id=id_no).first()
@@ -139,4 +169,44 @@ def get_user_by_id(id_no):
         req_role = session.query(User.Admin).filter_by(id=id_no).first()
     else:
         req_role = None
-    return  req_user, req_role
+    session.close()
+    return req_user, req_role
+
+
+def get_machine(mach_id):
+    session = Session()
+    req_mach = session.query(User.LabMachine).filter_by(Mach_id=mach_id).first()
+    session.close()
+    return req_mach
+
+
+def add_machine(mach):
+    session = Session()
+    session.add(mach)
+    session.commit()
+    session.close()
+
+
+def using_machine(mach_id, id_no=None):
+    session = Session()
+    req_mach = session.query(User.LabMachine).filter_by(Mach_id=mach_id).first()
+    req_mach.Current_user = id_no
+    session.flush()
+    session.commit()
+    session.close()
+
+
+def machine_in_use(id_no):
+    session = Session()
+    req_machine = session.query(User.LabMachine).filter_by(Current_user=id_no).first()
+    session.close()
+    if req_machine:
+        return True
+    else:
+        return False
+
+def get_all_machines():
+    session = Session()
+    users = session.query(User.LabMachine).all()
+    session.close()
+    return users

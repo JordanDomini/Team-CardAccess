@@ -61,7 +61,7 @@ class LabMachine(Base):
     __tablename__ = 'machines'
 
     Name = Column(String(50), nullable=False)
-    Mach_num = Column(String(50), nullable=False, primary_key=True, index=True)
+    Mach_num = Column(Integer, nullable=False, primary_key=True, index=True)
     Current_user = Column(Integer, nullable=True)
 
     def __repr__(self):
@@ -76,5 +76,5 @@ class LabMachine(Base):
 # USR = 'MACH'
 # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@10.250.250.250/test_db'.format(USR, PWD)
 # engine = create_engine(SQLALCHEMY_DATABASE_URI)
-# Base.metadata.drop_all(engine)
+# # Base.metadata.drop_all(engine)
 # Base.metadata.create_all(engine)
