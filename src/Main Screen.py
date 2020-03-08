@@ -10,7 +10,7 @@ id = ""
 
 
 # all of the "delete" defs below are linked to the return buttons of various windows to allow users
-# to backtrack if need be
+# to backtrack if needed
 def delete1():
     screen2.destroy()
 
@@ -156,7 +156,7 @@ def admin_add(name, id_num):
         id = ""
     else:
         Label(screen11, text="Please scan your ID card!", fg="red").grid(row=6, column=3)
-
+        
 
 def student_add(name, id_num, mach001, mach002, mach003, mach004, mach005, mach006, mach007, mach008, mach009, mach010):
     global id
