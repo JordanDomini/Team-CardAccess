@@ -70,6 +70,15 @@ def delete13():
     student_edit()
     screen14.destroy()
 
+
+def delete14():
+    screen15.destroy()
+
+
+def delete15():
+    screen16.destroy()
+    registered_machine()
+
 # Used for scanning IDS in the "Register User" window
 def register_user_card_read():
     global id
@@ -605,6 +614,51 @@ def edit_user():
     Button(screen3, text="Return", width=5, height=1, command=delete2).grid(row=7)
 
 
+def add_machine():
+    registered_machine()
+
+
+def registered_machine():
+    global screen15
+    screen15 = Toplevel(screen)
+    screen15.title("Add Machine")
+    w, h = 400, 400
+    screen15.geometry('%dx%d+%d+%d' % (
+        w, h, ((screen15.winfo_screenwidth() / 2) - (w / 2)), ((screen15.winfo_screenheight() / 2) - (h / 2))))
+    Label(screen15, text="Registered Machines").grid(row=0, column=3)
+    Button(screen15, text="Return", width=10, height=1, command=delete14()).grid(row=1)
+    Label(screen15, text="").grid(row=3)
+    Label(screen15, text="Drill Press", width=10, height=1).grid(row=4, column=1)
+    Label(screen15, text="Machine2", width=10, height=1).grid(row=4, column=4)
+    Label(screen15, text="").grid(row=5)
+    Label(screen15, text="Machine3", width=10, height=1).grid(row=6, column=1)
+    Label(screen15, text="Machine4", width=10, height=1).grid(row=6, column=4)
+    Button(screen15, text="Add Machine", width=10, height=1, command=new_machine).grid(row=2, column=3)
+
+
+def new_machine():
+    machine_info()
+    screen15.destroy
+
+def machine_info():
+    global screen16
+    global machine_name
+
+    machine_verify = StringVar()
+
+    screen16 = Toplevel(screen)
+    screen16.title("Add Machine")
+    w, h = 300, 100
+    screen16.geometry('%dx%d+%d+%d' % (
+        w, h, ((screen16.winfo_screenwidth() / 2) - (w / 2)), ((screen16.winfo_screenheight() / 2) - (h / 2))))
+    Label(screen16, text="Enter the New Machine Name").grid(row=0, column=3)
+    Label(screen16, text="").grid(row=1)
+    machine_name = Entry(screen16, textvariable=machine_verify).grid(row=2, column=3)
+    Button(screen16, text="Enter", width=10, height=1).grid(row=3, column=3)
+    Label(screen16, text="").grid(row=4)
+    Button(screen16, text="Return", width=10, height=1, command=delete15()).grid(row=5)
+
+
 def main_screen():
     global screen
     screen = Tk()
@@ -617,6 +671,8 @@ def main_screen():
     Button(text="Edit User", height="2", width="30", command=edit_user).pack()
     Label(text="").pack()
     Button(text="Register User", height="2", width="30", command=register_user).pack()
+    Label(text="").pack()
+    Button(text="Add Machine", height="2", width="30", command=).pack()
 
     screen.mainloop()
 
