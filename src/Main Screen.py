@@ -59,7 +59,16 @@ def delete10():
 
 def delete11():
     screen12.destroy()
-    
+
+
+def delete12():
+    admin_edit()
+    screen13.destroy()
+
+
+def delete13():
+    student_edit()
+    screen14.destroy()
 
 # Used for scanning IDS in the "Register User" window
 def register_user_card_read():
@@ -139,13 +148,11 @@ def student_update(name, id_num, mach001, mach002, mach003, mach004, mach005, ma
     screen6.destroy()
 
 
-def student_delete():
+def user_delete():
     global id
 
+    screen6.destroy()
 
-def admin_delete():
-    global id
-    
 
 def admin_get(id_num):
     req_user, req_role = dl.get_usr_by_id(id_num)
@@ -279,9 +286,7 @@ def student_edit(req_user, req_role):
            command=lambda: student_update(name_verify.get(), ID_verify.get(), mach001.get(), mach002.get(), mach003.get(),
                                        mach004.get(), mach005.get(), mach006.get(), mach007.get(), mach008.get(),
                                        mach009.get(), mach010.get())).grid(row=10+int(len(machs)/2), column=5)
-    Label(screen6, text="Delete this Student?").grid(row=9, column=3)
-    Button(screen6, text="Yes", width=10, height=1, command=).grid(row=10, column=2)
-    Button(screen6, text="No", width=10, height=1, command=delete10).grid(row=10, column=4)
+    Button(screen6, text="Delete this Student?", width=10, height=1, command=student_delete).grid(row=11, column=3)
     name_entry1.insert(0, req_user.name)
     ID_entry1.insert(0, req_user.id)
     if req_role.Mach001:
@@ -305,6 +310,24 @@ def student_edit(req_user, req_role):
     elif req_role.Mach010:
         but10.select()
 
+
+def student_delete():
+    screen6.destroy()
+    student_confirm()
+
+
+def student_confirm():
+    global screen14
+    screen14 = Toplevel(screen)
+    screen14.title("Edit")
+    w, h = 300, 200
+    screen8.geometry('%dx%d+%d+%d' % (
+        w, h, ((screen14.winfo_screenwidth() / 2) - (w / 2)), ((screen14.winfo_screenheight() / 2) - (h / 2))))
+    Label(screen14, text="Are You Sure?").grid(row=0, column=3)
+    Label(screen14, text="").grid(row=1)
+    Label(screen14, text="").grid(row=2)
+    Button(screen14, text="Yes", width=10, height=2).grid(row=3, column=1)
+    Button(screen14, text="No", width=10, height=2, command=delete13).grid(row=3, column=4)
 
 def admin_edit(req_user, req_role):
     global screen7
@@ -333,15 +356,32 @@ def admin_edit(req_user, req_role):
            command=admin_register_card_read).grid(row=5, column=3)
     Label(screen7, text="").grid(row=6)
     Label(screen7, text="").grid(row=7)
-    Button(screen7, text="Return", width=10, height=1, command=delete10).grid(row=8)
+    Button(screen7, text="Return", width=10, height=1, command=delete10).grid(row=10)
     Button(screen7, text="Update", width=10, height=2,
            command=lambda: admin_update(name_verify1.get(), ID_verify1.get())).grid(row=7, column=3)
-    Label(screen7, text="Delete this Student?").grid(row=8, column=3)
-    Button(screen7, text="Yes", width=10, height=1, command=).grid(row=9, column=2)
-    Button(screen7, text="No", width=10, height=1, command=delete10).grid(row=9, column=4)
+    Label(screen7, text="").grid(row=8)
+    Label(screen7, text="").grid(row=9)
+    Button(screen7, text="Delete this Admin?", command=admin_delete).grid(row=10, column=3)
     name_entry2.insert(0, req_user.name)
     ID_entry2.insert(0, req_user.id)
 
+
+def admin_delete():
+    screen7.destroy()
+    admin_confirm()
+
+def admin_confirm():
+    global screen13
+    screen13 = Toplevel(screen)
+    screen13.title("Edit")
+    w, h = 300, 200
+    screen8.geometry('%dx%d+%d+%d' % (
+        w, h, ((screen13.winfo_screenwidth() / 2) - (w / 2)), ((screen13.winfo_screenheight() / 2) - (h / 2))))
+    Label(screen13, text="Are You Sure?").grid(row=0, column=3)
+    Label(screen13, text="").grid(row=1)
+    Label(screen13, text="").grid(row=2)
+    Button(screen13, text="Yes", width=10, height=2).grid(row=3, column=1)
+    Button(screen13, text="No", width=10, height=2, command=delete12).grid(row=3, column=4)
 
 # screen for user to register their information in order to login. This is where the student
 # permissions will be allocated
